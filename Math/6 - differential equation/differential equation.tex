@@ -1,0 +1,199 @@
+\documentclass[UTF8]{ctexart}
+
+\usepackage{geometry}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+
+\special{papersize={18.1cm,25.7cm}}
+\geometry{left=1.5cm,right=0.5cm,top=2cm,bottom=1cm}
+\pagestyle{empty}
+
+\newcommand{\D}{\text{d}\;\!}
+\newcommand{\dif}[1]{\text{d}\;\!#1}
+\newcommand{\dev}[1]{\frac{\text{d}}{\dif{#1}}\;\!}
+
+\begin{document}
+
+\section*{微分方程 differential equation}
+
+\bigskip
+
+凡是表示未知函数、未知函数的导数与自变量之间关系的方程称为微分方程，其中出现的未知函数的最高阶导数的阶数称为微分方程的阶；
+
+如果一个函数带入微分方程后，使方程成为恒等式，就称这个函数为方程的一个解；
+
+如果微分方程的接种含有任意常数，且任意常数的个数与微分方程的阶数相同，这样的解叫做微分方程的通解；
+
+为确定一微分方程唯一解，遍需要一些额外的条件（初值条件），如
+\[y|_{x=x_0}=y_0\quad y'|_{x=x_0}=y'_0\]
+
+确定了任意常数以后得微分方程的一个特解
+
+求微分方程满足其初值条件的特解的问题叫做微分方程的初值问题
+\bigskip
+\bigskip
+
+\section*{可分离变量的微分方程}
+
+\bigskip
+
+如果一个一阶微分方程能写成
+\[ g(y)\dif{y}=f(x)\dif{x} \]
+的形式，就称原方程为可分离变量的微分方程；
+即
+\[ \int g(y)\dif{y}=\int f(x)\dif{x} \]
+其解$y=\Phi(x)$满足
+\[\Phi'(x)=\frac{f(x)}{g(y)}\]
+
+\bigskip
+
+如果一阶微分方程可化为
+\[\frac{\dif{y}}{\dif{x}}=\varphi(\frac{y}{x})\]
+则称其为齐次方程，其通解为
+\[ \int\frac{\dif{u}}{\varphi(u)-u}=\int\frac{\dif{x}}{x} \quad(u=\frac{y}{x})\]
+\bigskip
+\bigskip
+
+\section*{一阶线性微分方程}
+
+\bigskip
+
+方程
+\[ \frac{\dif{y}}{\dif{x}}+P(x)y=Q(x) \]
+叫做一阶线性微分方程；如果$Q(x)\equiv0$，那么称其为齐次的，否则称其为非齐次的
+将非齐次微分方程的$Q(x)$以$0$替换，即得其对应的齐次线性方程；其通解为
+\[ y=Ce^{-\int p(x)\dif{x}} \]
+而非齐次微分方程的解为
+\[y=Ce^{-\int p(x)\dif{x}}\;+\;e^{-\int p(x)\dif{x}}\int Q(x)e^{-\int p(x)\dif{x}}\dif{x}\]
+可以看出，其第一项为对应齐次线性方程的一个通解，而第二项为非齐次方程的一个特解
+
+\textbf{一个非齐次线性方程的解为其对应齐次线性方程的通解与其特解的和}
+
+\section*{伯努利方程}
+
+方程
+\[\frac{\dif{y}}{\dif{x}}+P(x)y=Q(x)y^n\quad(n\ne0,1)\]
+称为伯努利(Bernoulli)方程，当$n=0$或$n=1$时，为线性微分方程；
+其通解为
+\[ \frac{\dif{z}}{\dif{x}}+(1-n)P(x)z=(1-n)Q(x)\quad(z=y^{1-n}) \]
+
+\section*{可降阶的高阶微分方程}
+
+\subsection*{$y^{(n)}=f(x)$型}
+迭代
+\[y^{(n-1)}=\int f(x)\dif{x}+C_1\]
+有限次后可将原始化为一一阶微分方程
+
+\subsection*{$y''=f(x,y')$型}
+\[y=\int\varphi(x,C_1)\dif{x}+C_2\quad(\varphi'(x,C_1)=f(x,\varphi(x,C_1)))\]
+
+\subsection*{$y''=f(y,y')$型}
+\[\int\frac{\dif{y}}{\varphi(y,C_1)}=x+C_2\quad(\varphi(y,C_1)\cdot\dev{y}\varphi(y,C_1)=f(y,\varphi(y,C_1)))\]
+\bigskip
+\bigskip
+
+\section*{高阶线性微分方程}
+
+\bigskip
+
+\subsection*{线性微分方程的解的性质}
+\begin{itemize}
+  \item 如果函数$y_1(x)$与$y_2(x)$均为一线性齐次微分方程的解，那么
+  \[y=C_1y_1(x)+C_2y_2(x)\]
+  也是其解，$C_1$与$C_2$为任意常数（解的线性叠加性）
+
+  \item 如果函数$y_1(x),y_2(x),\cdots,y_n(x)$为一线性齐次微分方程的$n$个线性无关的特解，
+  那么该方程的通解为
+  \[y=\sum^n_{i=1}C_iy_i(x)\]
+  其中$C_i$为任意常数
+
+  \item 设$y^*(x)$是非齐次线性微分方程的一特解，$Y(x)$是其对应齐次线性微分方程的通解，则
+  \[ y=Y(x)+y^*(x) \]
+  是该非齐次线性微分方程的通解
+
+  \item 设非齐次线性微分方程的右端为两函数之和
+  \[y^{(n)}+p_1y^{(n-1)}+\cdots+p_ny=f_1(x)+f_2(x)\]
+  而$y_1^*(x)$与$y_2^*(x)$分别为方程
+  \[ y^{(n)}+p_1y^{(n-1)}+\cdots+p_ny=f_1(x) \]
+  与
+  \[ y^{(n)}+p_1y^{(n-1)}+\cdots+p_ny=f_2(x) \]
+  的特解，则$y_1^*(x)+y_2^*(x)$就是原方程的特解（叠加原理）
+\end{itemize}
+
+\bigskip
+\bigskip
+
+\section*{$n$阶常系数齐次线性微分方程}
+
+$n$阶常系数齐次线性微分方程的一般形式为
+\[y^{(n)}+p_1y^{(n-1)}+\cdots+p_ny=0\]
+其中$p_i$为常数
+
+有时我们用记号$\text{D}$（叫做微分算子）表示对$x$求导的运算$\dev{x}$，把$\frac{\dif{y}}{\dif{x}}$记作$\text{D}y$，
+把$\frac{\text{d}^ny}{\dif{x}^n}$记作$\text{D}^ny$，因而$n$阶常系数齐次线性微分方程的一般形式也可记为
+\[(\text{D}^n+p_1\text{D}^{n-1}+\cdots+p_n)y=0\]
+记
+\[L(\text{D})=\text{D}^n+p_1\text{D}^{n-1}+\cdots+p_n\]
+$L(\text{D})$叫做微分算子$\text{D}$的$n$次多项式，$n$阶常系数齐次线性微分方程的一般形式也可记为
+\[L(\text{D})y=0\]
+如果选取$r$，使$L(r)=0$,那么这个$r$使得$e^{rx}$为此微分方程的一个解
+
+$L(r)=0$称为$L(\text{D})y=0$的特征方程
+
+\subsection*{特征方程的根与解的对应}
+\begin{center}
+  \begin{tabular}{ll}
+    特征方程的根&微分方程通解中的对应项\\
+    \hline
+    单实根$r$&$Ce^{rx}$\\
+    $k$重实根&$(C_1+C_2x+\cdots+C_kx^{k-1})e^{rx}$\\
+    一对共轭根$\alpha\pm\beta\text{i}$&$Ae^{\alpha x}\cos(\beta x+\phi)$\\
+    $k$重共轭根$\alpha\pm\beta\text{i}$&$(A_1+A_2x+\cdots+A_kx^{k-1})e^{\alpha x}\cos(\beta x+\phi)$
+  \end{tabular}
+\end{center}
+
+\section*{$n$阶常系数非齐次线性微分方程}
+
+\bigskip
+通式
+\[y^{(n)}+p_1y^{(n-1)}+\cdots+p_ny=f(x)\]
+其解$y=Y(x)+y^*(x)$，其中$Y(x)$是其对应齐次方程的通解，$y^*(x)$是其特解
+\subsection*{$f(x)=e^{\lambda x}P_m(x)$}
+推测其根为$y^*=R(x)e^{\lambda x}$，后将其带入原式尝试，确定多项式$R(x)$
+
+\subsection{$f(x)=e^{\lambda x}[P_l(x)\cos\omega x+Q_n(x)\sin\omega x]$}
+\begin{align*}
+f(x) &= e^{\lambda x}[P_l(x)\cos\omega x+Q_n(x)\sin\omega x] \\
+&= (\frac{P_l-Q_n\text{i}}{2})e^{()\lambda+\omega\text{i})x}+(\frac{P_l+Q_n\text{i}}{2})e^{()\lambda-\omega\text{i})x}\\
+&= P(x)e^{()\lambda+\omega\text{i})x}+\overline{P}(x)e^{()\lambda-\omega\text{i})x}
+\end{align*}
+其特解的形式为
+\[y^*=x^ke^{\lambda x}[R_me^{\omega x\text{i}}+\overline{R_m}e^{-\omega x\text{i}}]\]
+\bigskip
+\bigskip
+
+\section*{欧拉方程}
+
+\bigskip
+
+形如
+\[ x^ny^{(n)}+p_1x^{n-1}y^{(n-1)}+\cdots+p_ny=f(x) \]
+的方程叫做欧拉方程
+
+用$\text{D}$表示$\dev{t}$,则
+\[x^ky^{(k)}=D(D-1)\cdots(D-k+1)y\]
+\bigskip
+\bigskip
+
+\section*{常系数线性微分方程组}
+
+\bigskip
+由几个微分方程联立起来共同确定几个具有同一自变量的函数，称为微分方程组
+
+如果微分方程组中每一个微分方程组都是线性常系数微分方程，则称其为常系数线性微分方程组
+
+\end{document}

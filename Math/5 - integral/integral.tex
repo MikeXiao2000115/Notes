@@ -1,0 +1,195 @@
+\documentclass[UTF8]{ctexart}
+
+\usepackage{geometry}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+
+\special{papersize={18.1cm,25.7cm}}
+\geometry{left=1.5cm,right=0.5cm,top=2cm,bottom=1cm}
+\pagestyle{empty}
+
+\newcommand{\D}{\text{d}\;\!}
+\newcommand{\dif}[1]{\text{d}\;\!#1}
+\newcommand{\dev}[1]{\frac{\text{d}}{\dif{#1}}\;\!}
+
+\begin{document}
+
+\section*{定积分 integral}
+
+\bigskip
+
+设函数$f(x)$在$[a,b]$上有界，在$[a,b]$中任意插入若干个分点$a=x_0<x_1<x_2<\cdots<x_n=b$把区间$[a,b]$分成$n$个小区间$[x_0,x_1],[x_1,x_2],\cdots,[x_{n-1},x_n]$，
+各个小区间的长度依次为$\Delta x_1 = x_1-x_0,\Delta x_2 = x_2-x_1,\cdots,\Delta x_n = x_n-x_{n-1}$在每个小区间$[x_{i-1},x_i]$上任取一点$\xi_i\:(x_{i-1}\le\xi_i\le x_i)$，
+作函数值$f(\xi_i)$与小区间长度$\Delta x_i$的乘积$f(\xi_i)\Delta x_i$，并作出和
+\[ S=\sum^n_{i=1}f(\xi_i)\Delta x_i \]
+记$\lambda=\max\{\Delta x_1,\Delta x_2,\cdots,\Delta x_n\}$，如果当$\lambda\to0$时，这和的极限追踪存在，且与闭区间$[a,b]$的分法及点$\xi_i$的取法无关，
+那么称这个极限$I$为函数$f(x)$在区间$[a,b]$上的定积分，
+\[\int^b_af(x)\dif{x}=I=\lim_{\lambda\to0}\sum^n_{i=1}f(\xi_i)\Delta x_i\]
+其中$f(x)$叫做被积函数的，$f(x)\dif{x}$叫做被积表达式，$x$叫做积分变量，$a$叫做积分下限，$b$叫做积分上限，$[a,b]$叫做积分区间
+
+
+\bigskip
+
+\textbf{如果$f(x)$在区间$[a,b]$上连续，则$f(x)$在$[a,b]$上可积}
+\textbf{如果$f(x)$在区间$[a,b]$上有界，且只有有限个间断点，则$f(x)$在$[a,b]$上可积}
+
+\bigskip
+\bigskip
+
+\section*{定积分的性质}
+
+\bigskip
+
+设$\alpha$与$\beta$均为常数，则
+\[ \int^b_a[\alpha f(x)+\beta g(x)]\dif{x}=\alpha\int^b_af(x)\dif{x}+\beta\int^b_ag(x)\dif{x} \]
+
+设$a<c<b$，则
+\[ \int^b_af(x)\dif{x}=\int^c_af(x)\dif{x}+\int^b_cf(x)\dif{x} \]
+
+如果在区间$[a,b]$上$f(x)\equiv1$那么
+\[ \int^b_af(x)\dif{x}=\int^b_a1\dif{x}=\int^b_a\dif{x}=b-a\]
+
+如果在区间$[a,b]$上$f(x)\ge0$，那么
+\[ \int^b_af(x)\dif{x}\ge0\quad(a\le b) \]
+
+如果在区间$[a,b]$上$f(x)\ge g(x)$，那么
+\[ \int^b_af(x)\dif{x}\ge\int^b_ag(x)\dif{x}\quad(a\le b) \]
+
+\[ \left| \int^b_af(x)\dif{x} \right|\le\int^b_a|f(x)|\dif{x}\quad(a\le b) \]
+
+设$M$及$m$分别时函数$f(x)$在区间$[a,b]$上的最大值及最小值，则
+\[ m(b-a)\le\int^b_af(x)\dif{x}\le M(b-a) \quad(a\le b)\]
+
+如果函数$f(x)$在积分区间$[a,b]$上连续，那么在$[a,b]$上至少存在一点$\xi$，使
+\[ \int^b_af(x)\dif{x}=f(\xi)(b-a)\quad(a\le\xi\le b) \]
+成立（积分中值公式）
+
+如果函数$f(x)$在区间$[a,b]$上连续，那么积分上限的函数
+\[ \Phi(x)=\int^x_af(t)\dif{t} \]
+在$[a,b]$上可导，并且它的导数
+\[ \Phi'(x)=\dev{x}\int^x_af(t)\dif{t}=f(x)\quad(a\le x\le b) \]
+
+如果函数$f(x)$在区间$[a,b]$上连续，那么函数
+\[ \Phi(x)=\int^x_af(t)\dif{t} \]
+就是$f(x)$在$[a,b]$上的一个原函数
+
+\textbf{牛顿-莱布尼茨公式 Newton-Leibniz formula}
+如果函数$F(x)$使连续函数$f(x)$在区间$[a,b]$上的一个原函数，那么
+\[ \int_a^bf(x)\dif{x}=F(b)-F(a) \]
+
+\bigskip
+
+假设函数$f(x)$在区间$[a,b]$上连续，函数$x=\phi(t)$满足条件
+\begin{itemize}
+  \item $\phi(\alpha)=a,\phi(\beta)=b$
+  \item $\phi(t)$在$[\alpha,\beta]$（或$[\beta,\alpha]$）上具有连续导数，且其值域$R_\phi=[a,b]$
+\end{itemize}
+则有
+\[ \int_a^bf(x)\dif{x}=\int_\alpha^\beta f[\phi(t)]\phi'(t)\dif{t} \]
+
+\bigskip
+
+\[ \int_a^bu\dif{v}=[uv]_a^b-\int_a^bv\dif{uz} \]
+
+\bigskip
+\bigskip
+
+\section*{反常积分 Improper integral}
+
+\bigskip
+
+\begin{itemize}
+  \item 设函数$f(x)$在区间$[a,+\infty)$上连续，如果极限$\displaystyle\lim_{t\to+\infty}\int_a^tf(x)\dif{x}$存在，
+  那么称反常积分$\displaystyle\int_a^{+\infty}f(x)\dif{x}$收敛，并称此极限为反常积分的值；否则称其发散
+  \item 设函数$f(x)$在区间$（-\infty，b]$上连续，如果极限$\displaystyle\lim_{t\to-\infty}\int_t^bf(x)\dif{x}$存在，
+  那么称反常积分$\displaystyle\int_{\infty}^bf(x)\dif{x}$收敛，并称此极限为反常积分的值；否则称其发散
+  \item 设函数$f(x)$在区间$（-\infty，\infty]$上连续，如果反常积分$\displaystyle\int_0^{+\infty}f(x)\dif{x}$ 与$\displaystyle\int_{\infty}^0f(x)\dif{x}$
+  均收敛，那么称反常积分$\displaystyle\int_{-\infty}^{+\infty}f(x)\dif{x}$收敛，其值为前两者的和；否则称其发散
+\end{itemize}
+以上反常积分统称为无穷限的反常积分
+
+\bigskip
+
+\begin{itemize}
+  \item 设函数$f(x)$在区间$(a,b]$上连续，点$a$为$f(x)$的瑕点，如果极限$\displaystyle\lim_{t\to a^+}\int_t^bf(x)\dif{x}$存在，
+  那么称反常积分$\int_a^bf(x)\dif{x}$收敛，并称此极限为反常积分的值；否则称其发散
+  \item 设函数$f(x)$在区间$[a,b)$上连续，点$b$为$f(x)$的瑕点，如果极限$\displaystyle\lim_{t\to b^-}\int_a^tf(x)\dif{x}$存在，
+  那么称反常积分$\int_a^bf(x)\dif{x}$收敛，并称此极限为反常积分的值；否则称其发散
+  \item 设函数$f(x)$在区间$[a,c)$及$(c,b]$上连续，点$c$为$f(x)$的瑕点，如果反常积分$\int_a^cf(x)\dif{x}$与$\int_c^bf(x)\dif{x}$均收敛，
+  那么称反常积分$\int_a^bf(x)\dif{x}$收敛，其值为前两者之和；否则称其发散
+\end{itemize}
+
+\bigskip
+\bigskip
+
+\section*{反常积分审敛法\& $\Gamma$函数}
+
+\bigskip
+
+设函数$f(x)$在区间$[a,+\infty)$上连续，且$f(x)\ge0$，若函数
+\[F(x)=\int_a^xf(t)\dif{t}\]
+在$[a,+\infty)$上有上界，则反常积分$\int_a^{+\infty}f(x)\dif{x}$收敛
+
+设函数$f(x)$，$g(x)$在区间$[a,+\infty)$上连续；
+如果$0\le f(x)\le g(x)\quad(a\le x<+\infty)$，
+并且$\int_a^{+\infty}g(x)\dif{x}$收敛，那么$\int_a^{+\infty}f(x)\dif{x}$也收敛；
+$0\le g(x)\le f(x)\quad(a\le x<+\infty)$，
+并且$\int_a^{+\infty}g(x)\dif{x}$发散，那么$\int_a^{+\infty}f(x)\dif{x}$也发散
+
+设函数$f(x)$在区间$[a,+\infty)\quad(a>0)$上连续，且$f(x)\ge0$；
+如果存在常数$M>0$及$p>1$，使得$f(x)\le\frac{M}{x^p}\quad(a\le x<+\infty)$，
+那么反常积分$\int_a^{+\infty}f(x)\dif{x}$收敛；
+如果存在常数$N>0$，使得$f(x)\ge\frac{N}{x}\quad(a\le x<+\infty)$，
+那么反常积分$\int_a^{+\infty}f(x)\dif{x}$发散
+
+设函数$f(x)$在区间$[a,+\infty)$上连续，且$f(x)\ge0$；
+如果存在常数$p>1$，使得$\lim_{x\to+\infty}x^pf(x)=c<+\infty$，
+那么反常积分$\int_a^{+\infty}f(x)\dif{x}$收敛；
+如果存在常数$N>0$，使得$\lim_{x\to+\infty}xf(x)=d>0$，
+那么反常积分$\int_a^{+\infty}f(x)\dif{x}$发散
+
+设函数$f(x)$在区间$[a,+\infty)$上连续，如果反常积分
+\[ \int_a^{+\infty}|f(x)|\dif{x} \]
+收敛（即，绝对收敛），那么反差积分
+\[ \int_a^{+\infty}f(x)\dif{x} \]
+也收敛
+
+\bigskip
+
+设函数$f(x)$在区间$(a,b]$上连续，且$f(x)\ge0$，$x=a$为$f(x)$的瑕点，
+如果存在常数$M>0$及$q<1$，使得
+\[ f(x)\le\frac{M}{(x-a)^q} \quad(a<x\le b)\]
+那么反常积分$\int_a^bf(x)\dif{x}$收敛；
+如果存在常数$N>0$，使得
+\[ f(x)\ge\frac{N}{x-a}\quad(a<x\le ) \]
+那么反常积分$\int_a^bf(x)\dif{x}$发散
+
+设函数$f(x)$在区间$(a,b]$上连续，且$f(x)\ge0$，$x=a$为$f(x)$的瑕点，
+如果存在常数$0<q<1$，使得
+\[ \lim_{x\to a^+}(x-a)^qf(x)\]
+存在，那么反常积分$\int_a^bf(x)\dif{x}$收敛；
+如果存在常数$N>0$，使得
+\[ \lim_{x\to a^+}(x-a)f(x)>0\]
+那么反常积分$\int_a^bf(x)\dif{x}$发散
+
+\bigskip
+
+\textbf{$\Gamma$函数}
+\[\Gamma(s)=\int_0^{+\infty}e^{-x}x^{s-1}\quad(s>0)\]
+
+\bigskip
+
+递推公式
+\[\Gamma(s+1)=s\Gamma(s)\quad(s>0)\]
+\[\Gamma(n+1)=n!\quad n\in\mathbb{N}^+\]
+
+当$s\to0^+$时，$\Gamma(s)\to+\infty$
+
+\[\Gamma(s)\Gamma(1-s)=\frac{\pi}{\sin \pi s}\quad(0<s<1)\]
+\[\Gamma(\frac{1}{2})=\sqrt{\pi}\]
+\[\int_0^{+\infty}e^{-u^2}\dif{u}=\frac{\sqrt{\pi}}{2}\]
+\end{document}

@@ -1,0 +1,68 @@
+\documentclass[UTF8]{ctexart}
+
+\usepackage{geometry}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+
+\special{papersize={18.1cm,25.7cm}}
+\geometry{left=1.5cm,right=0.5cm,top=2cm,bottom=1cm}
+\pagestyle{empty}
+
+\newcommand{\D}{\text{d}\;\!}
+\newcommand{\dif}[1]{\text{d}\;\!#1}
+
+\begin{document}
+
+\section*{不定积分 anti-derivative}
+
+\bigskip
+
+如果在区间$I$上，可导函数$F(x)$的导数为$f(x)$，即对于任意$x\in I$，都有
+\[ F'(x)=f(x)\quad or \quad \D F(x)=f(x)\D x \]
+那么函数$F(x)$就称为$f(x)$（或$f(x)\D x$）在区间$I$上的一个原函数 (primitive function)
+
+\bigskip
+
+如果函数$f(x)$在区间$I$上连续，那么在区间$I$上存在可导函数$F(x)$，使对任一$x\in I$都有
+\[ F'(x)=f(x) \]
+
+\bigskip
+
+在区间$I$上，函数$f(x)$的带有任一常数项的原函数称为$f(x)$在区间$I$上的不定积分，记作
+\[\int f(x)\D x\]
+其中记号$\displaystyle\int$称为积分号，$f(x)$称为被积函数，$f(x)\D x$称为被积表达式，$x$称为积分变量
+
+函数$f(x)$的原函数图像称为$f(x)$的积分曲线
+\bigskip
+\bigskip
+
+\section*{基本积分表}
+
+\bigskip
+
+\begin{center}
+  \renewcommand{\arraystretch}{2}
+  \begin{tabular}{ll}
+    $ \displaystyle\int k \D x=kx+C$&$ \displaystyle\int x^\mu \D x=\frac{x^{\mu+1}}{\mu+1}+C\quad(\mu\ne-1) $\\
+    $ \displaystyle\int \frac{1}{x}\D x = \ln{|x|}+C$&$ \displaystyle\int \frac{1}{1+x^2}=\arctan x +C$\\
+    $ \displaystyle\int \frac{1}{\sqrt{1-x^2}}\D x=\arcsin x+C$&$ \displaystyle\int \cos x\D x=\sin x+C$\\
+    $ \displaystyle\int \sin x\D x=-\cos x + C$ & $\displaystyle\int \frac{1}{\cos^2x}=\int \sec^2x \D x=\tan x+C$\\
+    $ \displaystyle\int \frac{1}{\sin^2x}\D x = \int \csc^2 x\D x=-\cot x+C$ & $\displaystyle\int \sec x\tan x\D x=\sec x+C$\\
+    $ \displaystyle\int \csc x\cot x\D x=-\csc x+C$ & $\displaystyle\int e^x\D x=e^x+C$\\
+    $ \displaystyle\int a^x\D x=\frac{a^x}{\ln a}+C$& $\displaystyle\int \tan x\dif{x}=-\ln|\cos x|+C$\\
+    $ \displaystyle\int \cot x\dif{x} = \ln|\sin x|+C$ & $\displaystyle\int \sec x\dif{x}=\ln|\sec x+\tan x|+C$\\
+    $ \displaystyle\int \csc x\dif{x} = \ln|\csc x - \cot x| + C$ & $\displaystyle\int \frac{1}{a^2+x^2}\dif{x}=\frac{1}{a}\arctan{\frac{x}{a}}+C$\\
+    $ \displaystyle\int \frac{1}{x^2-a^2}\dif{x}=\frac{1}{2a}\ln\left|\frac{x-a}{x+a}\right|+C$&$\displaystyle\int\frac{1}{\sqrt{a^2-x^2}}\dif{x}=\arctan\frac{x}{a}+C$\\
+    $ \displaystyle\int \frac{1}{\sqrt{x^2+a^2}}\dif{x} = \ln(x+\sqrt{x^2+a^2})+C$&$ \displaystyle\int \frac{1}{\sqrt{x^2-a^2}}\dif{x} = \ln|x+\sqrt{x^2-a^2}|+C$\\
+    $ \displaystyle\int[f(x)+g(x)]\D x=\int f(x)\D x+\int g(x)\D x$ &  $ \displaystyle\int kf(x)\D x=k\int f(x)\D x$ \\
+    $ \displaystyle\int f[\varphi(x)]\varphi'(x)\D x = \left[\int f(u)\D u \right]_{u=\varphi(x)}$ & $ \displaystyle\int f(x)\dif{x} = \left[\int f[\psi(t)]\psi'(t)\dif{t}\right]_{t=\psi^{-1}(x)}$
+  \end{tabular}
+\end{center}
+
+\[ \int u\dif{v}=uv-\int v\dif{u} \]
+
+\end{document}
