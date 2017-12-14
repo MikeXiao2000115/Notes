@@ -139,13 +139,90 @@ $\ve{0}$与任意向量平行，也与任意向量垂直
 
 \bigskip
 
-\subsection{空间直线的一般方程}
+\subsection*{空间直线的一般方程}
 空间中的一条直线可表示为满足方程组
 \[\begin{cases}
 A_1x+B_1y+C_1z+D_1=0\\
 A_2x+B_2y+C_2z+D_2=0
 \end{cases}\]
 的点集
+
+\subsection*{对称方程}
+如果一个非零向量平行于一条直线，那么这个向量为这条直线的方向向量
+
+如果点$M(x,y,z)$在直线$L$上，而$L$过点$M_0(x_0,y_0,z_0)$且有方向向量$\ve{s}=\veN{m}{n}{p}$，则有
+\[\veN{x-x_0}{y-y_0}{z-z_0}=\lambda\ve{s}\quad\lambda\in\mathbb{R}\]
+或
+\[\frac{x-x_0}{m}=\frac{y-y_0}{n}=\frac{z-z_0}{p}\]
+
+直线的任一方向向量的坐标称为该直线的方向数，其对应的方向余弦称为该直线的方向余弦
+\subsection*{参数方程}
+\[\begin{cases}
+x=x_0+mt\\
+y=y_0+mt\\
+z=z_0+mt
+\end{cases}\]
+
+\subsection*{夹角}
+直线与直线的夹角为它们方向向量的夹角
+
+直线与平面的夹角为方向向量与法向量的夹角
+
+\section*{曲面及其方程}
+
+\subsection*{旋转面}
+设被旋转的曲线（母线）在$yOz$平面上，其方程为
+\[f(y,z)=0\]
+绕$z$轴旋转（以$z$轴为轴），得旋转曲面$S$为
+\[ f(\pm\sqrt{x^2+y^2},z)=0 \]
+
+\subsection*{柱面}
+直线$L$沿定曲线$C$平行移动形成的轨迹，叫做柱面，定曲线$C$叫做柱面的准线，动直线$L$叫做主线的母线
+
+\subsection*{二次曲面}
+圆锥曲面 (Cone cylinder)：
+\[\frac{x^2}{a^2}+\frac{y^2}{b^2}=z^2\]
+
+平面$z=c$与曲面$F(x,y,z)=0$的交线称为截痕 (contour map)
+
+椭球面 (Ellipsoid cylinder)：
+\[\frac{x^2}{a^2}+\frac{y^2}{b^2}+\frac{z^2}{c^2}=1\]
+
+单叶双曲面 (one sheet Hyperboloid)：
+\[\frac{x^2}{a^2}+\frac{y^2}{b^2}-\frac{z^2}{c^2}=1\]
+
+双叶双曲面 (two sheet Hyperboloid)：
+\[\frac{x^2}{a^2}-\frac{y^2}{b^2}-\frac{z^2}{c^2}=1\]
+
+椭圆抛物面 (Paraboloid elliptic)：
+\[\frac{x^2}{a^2}+\frac{y^2}{b^2}=z\]
+
+双曲抛物面（马鞍面） (Paraboloid hyperbolic)：
+\[\frac{x^2}{a^2}-\frac{y^2}{b^2}=z\]
+
+\subsection*{曲面的参数方程}
+曲面可看作点集
+\[G(u,v) = (x(u,v),y(u,v),z(u,v))\]
+其中$u$与$v$为参数
+
+其法向量为
+\[\vec{N} =  \frac{\partial G}{\partial u}\times\frac{\partial G}{\partial v}\]
+
+\section*{空间曲线}
+\subsection*{一般方程}
+\[\begin{cases}
+F(x,y,z)=0\\
+G(x,y,z)=0
+\end{cases}\]
+\subsection*{参数方程}
+\[\begin{cases}
+x=x(t)\\
+y=y(t)\\
+z=z(t)
+\end{cases}\]
+\subsection*{在坐标平面上的投影}
+如果将空间曲线$C$可消去变量$z$以后，所得方程$H(x,y)=0$是一个母线平行于$z$轴的柱面，称为$C$在$xOy$面上的投影柱面，
+柱面与$xOy$的交线叫做空间曲线$C$在$xOy$上的投影曲线
 
 
 \end{document}

@@ -1,0 +1,190 @@
+\documentclass[UTF8]{ctexart}
+
+\usepackage{geometry}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\usepackage{bm}
+
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+
+\special{papersize={18.1cm,25.7cm}}
+\geometry{left=1.5cm,right=0.5cm,top=2cm,bottom=1cm}
+\pagestyle{empty}
+
+\newcommand{\D}{{\text{d}\;\!}}
+\newcommand{\cross}{\times}
+\newcommand{\dif}[1]{{\text{d}\;\!#1}}
+\newcommand{\dev}[1]{{\frac{\text{d}}{\dif{#1}}\;\!}}
+\newcommand{\ve}[1]{{\bm{#1}}}
+\newcommand{\ven}[2]{{\left\langle#1,#2\right\rangle}}
+\newcommand{\veN}[3]{{\left\langle#1,#2,#3\right\rangle}}
+\newcommand{\ang}[2]{{(\widehat{\ve{#1},\ve{#2}})}}
+\newcommand{\abs}[1]{{\left|{#1}\right|}}
+\newcommand{\when}[2]{{\left.{#1}\right|_{#2}}}
+\newcommand{\dist}[2]{{\left\|\ve{#1}-\ve{#2}\right\|}}
+
+\begin{document}
+
+\section*{多元函数 function of several variables}
+
+\subsection*{$n$维空间}
+$n$维实数坐标空间可表示为
+\[\mathbb{R}^n=\mathbb{R}\times\mathbb{R}\times\cdots\times\mathbb{R}=\{(x_1,x_2,\cdots,x_n)|x_1,x_2,\cdots,x_n\in\mathbb{R}\}\]
+
+设$\ve{x}=(x_1,x_2,\cdots,x_n)$，$\ve{y}=(y_1,y_2,\cdots,y_n)$为$\mathbb{R}^n$中任意两元素，
+$\lambda\in\mathbb{R}$，规定
+\[\ve{x}+\ve{y}=(x_1+y_1,x_2+y_2,\cdots,x_n+y_n)\]
+\[\lambda\ve{x}=(\lambda x_1,\lambda x_2,\cdots,\lambda x_n)\]
+它们的距离为
+\[\rho(\ve{x},\ve{y})=\sqrt{\sum^n_{i=1}(x_i-y_i)^2}\]
+记$\ve{x}$到零元的距离为$\|\ve{x}\|$，即
+\[\|\ve{x}\|=\rho(\ve{x},\ve{0})=\sqrt{\sum^n_{i=1}x_i^2}\]
+故
+\[\rho(\ve{x},\ve{y}=\|\ve{x}-\ve{y}\|)\]
+
+$\mathbb{R}^n$中变元的极限：
+设$\ve{x}=(x_1,x_2,\cdots,x_n),\ve{a}=(a_1,a_2,\cdots,a_n)\in\mathbb{R}^n$，如果
+\[\dist{x}{a}\to0\]
+那么称变元$\ve{x}$在$\mathbb{R}^n$中趋于固定元$\ve{a}$，记作$\ve{x}\to\ve{a}$
+
+即
+\[\ve{x}\to\ve{a} \Leftrightarrow x_1\to a_1,x_2\to a_2,\cdots,x_n\to a_n\]
+
+\subsection*{邻域}
+
+在$\mathbb{R}^n$上的邻域 (neighbourhood)的概念，设$P_0$是$\mathbb{R}^n$上的一点呢，$\delta$为某一正数与点$P_0$距离小于$\delta$的点$P$的集合称为点
+$P_0$的$\delta$邻域，记作$U(P_0,\delta)$，即
+\[ U(P_0,\delta)=\{P\,|\,\dist{P}{P_0}<\delta\} \]
+
+点$P_0$的去心$\delta$邻域 (deleted neighbourhood)，记作$\mathring{U}(P_0,\delta)$，即
+\[ U(P_0,\delta)=\{P\,|\,0<\dist{P}{P_0}<\delta\} \]
+
+如果不需要特别强调邻域的半径$\delta$，则用$U(P_0)$表示$P_0$的某个邻域，点$P_0$的去心邻域记为$\mathring{U}(P_0)$
+
+
+\subsection*{点与点集之间的关系}
+
+对于任意一点$P\in\mathbb{R}^n$与任一点集$E\subset\mathbb{R}^n$必为一下三种关系中的一个
+\begin{itemize}
+  \item {\bf 内点 (interior point)} 如果$\exists U(P)\subset E$，则称$P$为$E$的内点
+  \item {\bf 外点 (exterior point)} 如果$\exists U(P)\cap E = \varnothing$，则称$P$为$E$的外点
+  \item {\bf 边界点 (boundary point)} 如果$\forall U(P), \exists P_{in},P_{ex}\in U(P)\text{ let }P_{in}\in E,P_{ex}\notin E$，则称$P$为$E$的边界点
+\end{itemize}
+
+$E$的边界点的全体称为$E$的边界 (boundary)，记作$\partial E$
+
+聚点 (limit point)：如果对于任意给定的$\delta>0$，点$P$的去心邻域$\mathring{U}(P,\delta)$内总有$E$中的点，那么称点$P$是$E$的聚点（$E\cup\partial E$）
+
+\begin{itemize}
+  \item {\bf 开集 (open set)} 如果$E$的点都是$E$的内点，则称$E$为开集
+  \item {\bf 闭集 (closed set)} 如果$\partial E\subset E$，则称$E$为闭集
+  \item {\bf 连通集 (connected set)} 如果$E$内任意两点都可以用折线联结起来，且该折线上的点都属于$E$，则称$E$为连通集
+  \item {\bf (开)区域 (domain)} 连通的开集，称为区域
+  \item {\bf 闭区域 (bounded domain)} 开区域与其边界的合集，称为闭区域
+  \item {\bf 有界集 (bounded set)} 如果$\exists r, \text{ let }E\subset U(O,r)$（$O$为原点），那么称$E$为有界集
+  \item {\bf 无界集 (unbounded set)} 如果$E$不是有界集，它就是无界集
+\end{itemize}
+
+\subsection*{多元函数}
+设$D$是$\mathbb{R}^n$的一个非空子集，称映射$f:D\to\mathbb{R}$为定义在$D$上的$n$元函数，通常记为
+\[z=f(P),P\in D\]
+其中点集$D$称为该函数的定义域，$P$称为自变量，$z$称为因变量
+
+多元函数的值域
+\[f(D)={z\,|\,z=f(P),P\in D}\]
+
+\subsection*{多元函数的极限}
+设$n$元函数$f(P)$的定义域为$D$，点$P_0$为$D$的聚点，如果存在常数$A$，对于任意给定的正数$\epsilon$，总存在正数$\delta$,
+使得当点$P(x,y)\in D\cap\mathring{U}(P_0,\delta)$时，都有
+\[ |f(P)-A|<\epsilon \]
+成立，那么就称常数$A$为函数$f(P)$当$P\to P_0$时的极限，记作
+\[ \lim_{P\to P_0}f(P)=A\text{ or }f(P)\to A(P\to P_0) \]
+
+\subsection*{多元函数的连续性}
+设多元函数$f(P)$的定义域为$D$，$P_0$为$D$的聚点，且$P_0\in D$，如果
+\[\lim_{P\to P_0}f(P)=f(P_0)\]
+那么称函数$f(x)$在点$P_0$连续
+
+设函数$f(P)$的定义域为$D$，$P_0$是$D$的聚点，如果函数$f(P)$在点$P_0$不连续，那么称$P_0$为函数$f(P)$的断点
+
+{\bf 性质}
+\begin{itemize}
+  \item 在有界闭区间$D$上的多元连续函数，必定在$D$上有界，且能取得它的最大值与最小值
+  \item 在有界闭区间$D$上的多元连续函数必取得介于最大值与最小值之间的任意值
+  \item 在有界闭区间$D$上的多元连续函数必定在$D$上一致连续($\forall \epsilon>0,\exists \delta>0,\text{ let }|f(P_1)-f(P_2)|<\epsilon\text{ when }\dist{P_1}{P_2}<\delta$)
+\end{itemize}
+\bigskip
+\bigskip
+
+\section*{偏导数}
+
+\bigskip
+
+设函数$z=f(P)$在点$P_0$的某一邻域内有定义，对于变元$x_i$有增量$h$，对应函数的增量
+\[f(P_0+(0,0,\cdots,h,\cdots,0))-f(P_0)\]
+如果
+\[ \lim_{h\to0}\frac{f(P_0+(0,0,\cdots,h,\cdots,0))-f(P_0)}{h} \]
+存在，那么称此极限为函数$z=f(P)$在点$P_0$处对于$x_i$的偏导数 (partial derivative)，记作
+\[\when{\frac{\partial z}{\partial x_i}}{P=P_0},\when{\frac{\partial f}{\partial x_i}}{P=P_0}\text{ or }f_{x_i}(P_0)\]
+
+如果函数$z=f(P)$在区间$D$内任意点均可导，那么这些点位置与其对应的偏导数可以构成一个新的函数，
+称为偏导函数，记为
+\[\frac{\partial z}{\partial x_i},\frac{\partial f}{\partial x_i}\text{ or }f_{x_i}(P)\]
+
+\subsection*{高阶偏导数}
+设函数$z=f(P)$在区域$D$内具有偏导函数，如果对该偏导函数继续求偏导，得二阶偏导函数，如果求导对象不同则称为混合偏导，如
+\[ \frac{\partial}{\partial x_j}\left(\frac{\partial z}{\partial x_i}\right)=\frac{\partial^2z}{\partial x_i \partial x_j}=f_{x_ix_j}f(P) \]
+
+如果函数$z=f(P)$的两个二阶混合偏导数$\frac{\partial^2z}{\partial x_i \partial x_j}$与$\frac{\partial^2z}{\partial x_j \partial x_i}$在区域$D$内连续，
+那么在该区间内这两个二阶混合偏导函数必定相等
+
+\subsection*{拉普拉斯 (Laplace)方程}
+\[\frac{\partial^2z}{\partial x^2}+\frac{\partial^2z}{\partial y^2}=0\quad(z=\ln\sqrt{x^2+y^2})\]
+\[\frac{\partial^2u}{\partial x^2}+\frac{\partial^2u}{\partial y^2}+\frac{\partial^2u}{\partial z^2}=0\quad\left(z=\frac{1}{\sqrt{x^2+y^2+z^2}}\right)\]
+\bigskip
+\bigskip
+
+\section*{全微分 total derivative}
+
+\bigskip
+
+设函数$z=f(x)$在点$P$的某邻域内有定义，如果函数在点$P$的某邻域内有定义，如果函数在点$P$的全增量
+\[\Delta z=f(P+(\Delta x_1,\Delta x_2,\cdots,\Delta x_n))-f(P)\]
+维实数坐标空间可表示为
+\[\Delta z=\sum^n_{i=1}A_i\Delta x_i+o(\rho)\]
+其中$A_i$不依赖与$\Delta x_i$而仅与$P$有关，$\rho=\|(\Delta x_1,\Delta x_2,\cdots,\Delta x_n)\|$，那么称
+函数$z=f(P)$在点$P$可微分，而$\displaystyle \sum^n_{i=1}A_i\Delta x_i$称为函数$f(P)$在点$P$的全微分，记作$\dif{z}$
+\[\dif{z}=\sum^n_{i=1}A_i\Delta x_i\]
+
+\bigskip
+
+如果函数在区域$D$内各点处都可微分，那么称这函数在$D$内可微分
+
+\bigskip
+
+如果函数$z=f(P)$在点$P$可微分，那么该函数在点$P$的偏导$\frac{\partial z}{\partial x_i}$必定存在，
+且函数$z=f(P)$在点$P$的全微分为
+\[\dif{z}=\sum^n_{i=1}\frac{\partial z}{\partial x_i}\Delta x_i\]
+如果函数$z=f(P)$的偏导数$\frac{\partial z}{\partial x_i}$在点$P$连续，那么函数在改点可微分
+\bigskip
+\bigskip
+
+\section*{多元复合函数的求导法则}
+
+\bigskip
+
+\subsection*{一元函数与多元函数复合的情形}
+如果函数$u_i=\varphi_i(t)$在点$t$可导，函数$z=f(u_1,u_2,\cdots,u_n)$在对应点$(u_1,u_2,\cdots,u_n)$具有连续的偏导数，
+那么复合函数$z=f[\varphi_1(t)],\varphi_2(t),\cdots,\varphi_n(t)]$在点$t$可导，且有
+\[\frac{\dif{z}}{\dif{t}}=\sum^n_{i=1}\frac{\partial z}{\partial u_i}\frac{\dif{u_i}}{\dif{t}}\]
+
+\subsection{多元函数与多元函数复合的情形}
+
+
+
+
+
+\end{document}
