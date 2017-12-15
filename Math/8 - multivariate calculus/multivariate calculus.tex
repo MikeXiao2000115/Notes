@@ -181,8 +181,229 @@ $E$的边界点的全体称为$E$的边界 (boundary)，记作$\partial E$
 那么复合函数$z=f[\varphi_1(t)],\varphi_2(t),\cdots,\varphi_n(t)]$在点$t$可导，且有
 \[\frac{\dif{z}}{\dif{t}}=\sum^n_{i=1}\frac{\partial z}{\partial u_i}\frac{\dif{u_i}}{\dif{t}}\]
 
-\subsection{多元函数与多元函数复合的情形}
+\subsection*{多元函数与多元函数复合的情形}
+如果函数$v_i=\psi_i(P)$都在点$P=(u_1,u_2,\cdots,u_n)$具有对其各个分量的偏导，函数$z=f(v_1,v_2,\cdots,v_n)$在对应点$(v_1,v_2,\cdots,v_n)$具有连续偏导数，
+那么复合函数$z=f(\psi_1(P),\psi_2(P),\cdots,\psi_n(P))$在点$P$的各个偏导数均存在，且
+\[\frac{\partial z}{\partial u_i} = \sum^n_{i=1}\frac{\partial z}{\partial v_i}\frac{\partial v_i}{\partial u_i}\]
 
+\subsection*{其他情况}
+其他任意情况均可通过构造中间函数，将其转化为多元函数与多元函数复合的情形
+\bigskip
+\bigskip
+
+\section*{隐函数的求导公式}
+
+\bigskip
+\subsection*{二元函数}
+设函数$F(x,y)$在点$P(x_0,y_0)$的某一邻域内具有连续的偏导数，且$F(x_0,y_0)=0$，$F_y(x_0,y_0)\ne0$，
+则方程$F(x,y)=0$在点$(x_0,y_0)$的某一邻域内恒能唯一确定一个连续且具有连续导数的函数$y=f(x)$，它满足条件$y_0=f(x_0)$，并有
+\[ \frac{\dif{y}}{\dif{x}}=-\frac{F_x}{F_y} \]
+
+\subsection*{多元函数}
+设函数$F(P)$在点$P = (x_i,x_j,\cdots)$的某一邻域内具有连续的偏导数，且$F(P_0)=0$，$F_{x_j}(P_0)\ne0$,
+则方程$F(P)=0$在点$P_0$的某一邻域内恒能确定唯一的连续且具有连续偏导的函数$x_j=f(x_i,\cdots)$，
+它满足条件${x_j}_0=f({x_i}_0,\cdots)$，且有
+\[\frac{\partial x_j}{\partial x_i} = -\frac{F_{x_i}}{F_{x_j}}\]
+
+\subsection*{方程组}
+设一方程组$\displaystyle
+\begin{cases}
+  F_1(x_1,x_2,\cdots,x_n,y_1,y_2,\cdots,y_k)=0
+\\F_2(x_1,x_2,\cdots,x_n,y_1,y_2,\cdots,y_k)=0
+\\\cdots\cdots\cdots\cdots\cdots\cdots\cdots\cdots\cdots\cdots\cdots\cdots\\
+  F_k(x_1,x_2,\cdots,x_n,y_1,y_2,\cdots,y_k)=0
+\end{cases}$，其中$F_i(x_1,x_2,\cdots,x_n,y_1,y_2,\cdots,y_k)$在点$P_0$具有连续的偏导数，
+又$F_i(P_0)=0$，且雅可比 (Jacobi)行列式
+\[Jac(P)=\frac{\partial(F_1,F_2,\cdots,F_k)}{\partial(y_1,y_2,\cdots,y_k)}=
+{
+\renewcommand\arraystretch{1.5}
+\begin{vmatrix}
+  \displaystyle\frac{\partial F_1}{\partial y_1}&\displaystyle\frac{\partial F_1}{\partial y_2} &\displaystyle\cdots&\displaystyle\frac{\partial F_1}{\partial y_k} \\
+  \displaystyle\frac{\partial F_2}{\partial y_1}&\displaystyle\frac{\partial F_2}{\partial y_2} &\displaystyle\cdots&\displaystyle\frac{\partial F_2}{\partial y_k} \\
+  \displaystyle\vdots&\displaystyle\vdots&\displaystyle\ddots&\displaystyle\vdots \\
+  \displaystyle\frac{\partial F_k}{\partial y_1}&\displaystyle\frac{\partial F_k}{\partial y_2} &\displaystyle\cdots&\displaystyle\frac{\partial F_k}{\partial y_k}
+\end{vmatrix}
+}
+\]
+在点$P_0$不为$0$ ($Jac(P_0)\ne0$)，则方程组在点$P_0$的某一邻域内恒能唯一确定一组连续且具有连续偏导数的函数
+$y_i=f_i(x_1,x_2,\cdots,x_n)$，它们满足条件${y_i}_0=f_i({x_1}_0,{x_2}_0,\cdots,{x_n}_0)$，并有
+\[\frac{\partial f_i}{\partial x_j}=-\frac{1}{Jac(P_0)}\frac{\partial(F_1,F_2,\cdots,F_k)}{\partial(y_1,y_2,\cdots,y_{i-1},x_j,y_{i+1},\cdots,y_k)}\]
+\bigskip
+\bigskip
+
+\section*{多元函数微分学的几何应用}
+
+\bigskip
+\subsection*{一元向量值函数与导数}
+设数集$D\subset\mathbb{R}$，则称映射$f:D\to\mathbb{R}^n$为一元向量值函数，通常记为
+\[\ve{r}=\ve{f}(t)\quad t\in D\]
+其中数集$D$称为该函数的定义域，$t$称为自变量，$\ve{r}$称为因变量
+
+\bigskip
+
+设向量函数$\ve{f}(t)$在点$t_0$的某一去心邻域内有定义，如果存在一个常向量$\ve{r}_0$对于任意给定正数$\epsilon$，
+总存在正数$\delta$，使得当$t\in\mathring{U}(t_0,\delta)$时，对应函数值$\ve{f}(t)$都满足不等式
+\[|\ve{f}(t)-\ve{r}_0|<\epsilon\]
+那么，常向量$\ve{r}_0$就叫做向量值函数$\ve{f}(t)$当$t\to t_0$时的极限，记作
+\[\lim_{t\to t_0}\ve{f}(t)=\ve{r}_0\text{ or }\ve{f}(t)\to\ve{r}_0,t\to t_0\]
+
+\bigskip
+
+如果$\ve{f}(t)=\left\langle f_1(t),f_2(t),\cdots,f_n(t) \right\rangle$
+\[\lim_{t\to t_0}\ve{f}(t)=\left\langle \lim_{t\to t_0}f_1(t),\lim_{t\to t_0}f_2(t),\cdots,\lim_{t\to t_0}f_n(t) \right\rangle\]
+
+\bigskip
+
+设向量值函数$\ve{f}(t)$在点$t_0$的某一邻域内有定义，如果
+\[ \lim_{\Delta t\to0}\frac{\Delta \ve{r}}{\Delta t}=\lim_{\Delta t\to0}\frac{\ve{f}(t_0+\Delta t)-\ve{f}(t_0)}{\Delta t} \]
+存在，那么就称这个极限向量为向量函数$\ve{r}=\ve{f}(t)$在$t_0$处的导数或导向量，
+记作$\ve{f'}(t)$或$\when{\frac{\dif{\ve{r}}}{\dif{t}}}{t=t_0}$
+
+设向量函数$\ve{r}=\ve{f}(t)$，$t\in D$，若$D_1\subset D$，$\ve{f}(t)$在$D_1$中的每一点$t$处都存在导向量
+$\ve{f'}(t)$，则称$\ve{f}(t)$在$D_1$上可导
+
+\bigskip
+
+设向量值函数$\ve{f}(t)$在点$t_0$可导的充分必要条件是其各个分类在$t_0$都可导，且
+\[ \ve{f'}(t)=\left\langle f_1'(t),f_2'(t),\cdots,f_n'(t) \right\rangle \]
+
+\subsection*{一元向量值函数导数的性质}
+
+\begin{itemize}
+  \item $\displaystyle\dev{t}\ve{C}=\ve{0}$
+  \item $\displaystyle\dev{t}[c\ve{u}(t)]=c\ve{u'}(t)$
+  \item $\displaystyle\dev{t}[\ve{u}(t)\pm\ve{v}(t)]=\ve{u'}(t)\pm\ve{v'}(t)$
+  \item $\displaystyle\dev{t}[\varphi(t)\ve{u}(t)]=\varphi'(t)\ve{u}(t)+\varphi(t)\ve{u'}(t)$
+  \item $\displaystyle\dev{t}[\ve{u}(t)\cdot\ve{v}(t)]=\ve{u'}(t)\cdot\ve{v}(t)+\ve{u}(t)\cdot\ve{v'}(t)$
+  \item $\displaystyle\dev{t}[\ve{u}(t)\times\ve{v}(t)]=\ve{u'}(t)\times\ve{v}(t)+\ve{u}(t)\times\ve{v'}(t)$
+  \item $\displaystyle\dev{t}\ve{u}[\varphi(t)]=\varphi'(t)\ve{u'}[\varphi(t)]$
+\end{itemize}
+
+\subsection*{空间曲线的切线与法平面}
+设空间曲线$\Gamma$的参数方程为
+\[
+\begin{cases}
+  x=\varphi(t)\\
+  y=\psi(t)\\
+  z=\omega(t)
+\end{cases}
+\]
+其中$t\in[\alpha,\beta]$，则向量$\ve{T}=\ve{f'}(t_0)=\left\langle \varphi'(t_0),\psi'(t_0),\omega'(t_0) \right\rangle$
+就是曲线$\Gamma$在点$M$处的一个切向量，从而曲线$\Gamma$在点$M(x_0,y_0,z_0)$处的切线方程为
+\[\frac{x-x_0}{\varphi'(t_0)}=\frac{y-y_0}{\psi'(t_0)}=\frac{z-z_0}{\omega'(t_0)}\]
+通过点$M$且与切线垂直的平面称为曲线$Gamma$在点$M$处的法平面，它是通过点$M$，以$\ve{T}$为法向量的平面
+\[\varphi'(t_0)(x-x_0)+\psi'(t_0)(y-y_0)+\omega'(t_0)(z-z_0)=0\]
+
+\begin{itemize}
+  \item $\displaystyle\text{unit tangent vector}\quad\ve{T}(t) = \frac{\ve{f'}(t)}{\|\ve{f'}(t)\|}$
+  \item $\displaystyle\text{unit normal vector}\quad\ve{N}(t)=\frac{\ve{T'}(t)}{\|\ve{T'}(t)\|}$
+  \item $\displaystyle\text{binormal vector}\quad\ve{B}(t)=\ve{T}\times\ve{N}$
+\end{itemize}
+
+\subsection*{曲面的切平面与法线}
+引入向量
+\[\ve{n}=\veN{F_x(P)}{F_y(P)}{F_z(P)}\]
+为曲面的法向量，它垂直于曲面$F(x,y,z)=0$上任意一条过点$P$的曲线，
+而曲面的切平面为
+\[\ve{n}\cdot((x,y,z)-P_0)=0\]
+\bigskip
+\bigskip
+
+\section*{方向导数与梯度}
+
+\bigskip
+\subsection*{方向导数 directional derivative}
+如果函数$f$在点$P_0$可微分，那么函数在该点沿任一方向$\ve{l}$的方向导数存在，且有
+\[D_\ve{l}f(P_0)=\when{\frac{\partial f}{\partial \ve{l}}}{P_0}=\sum^n_{i=1}f_{x_i}(P_0)\cos\alpha_i\]
+其中$\cos\alpha_i$是方向$\ve{l}$的方向余弦
+
+\subsection*{梯度 gradient}
+对于任一函数$f(P)$可定出一向量
+\[\left\langle f_{x_1}(P_0),f_{x_2}(P_0),\cdots,f_{x_n}(P_0) \right\rangle\]
+这个向量称为函数$f(P)$在点$P_0$的梯度，记作$\textbf{grad}f(P_0)$或$\nabla f(P_0)$，即
+\[ \textbf{grad}f(P_0)=\nabla f(P_0)=\left\langle f_{x_1}(P_0),f_{x_2}(P_0),\cdots,f_{x_n}(P_0) \right\rangle \]
+其中$\displaystyle\nabla = \left\langle \frac{\partial}{\partial x_1},\frac{\partial}{\partial x_2},\cdots,\frac{\partial}{\partial x_n} \right\rangle$
+称为向量微分算子或Nabla算子
+
+\bigskip
+
+因而，方向导数也可表示为
+\[\when{\frac{\partial f}{\partial \ve{l}}}{P_0}=\nabla f(P_0)\cdot\ve{l}\]
+
+\subsection*{数量场与向量场 scalar field \& vector field}
+如果对于空间区域$G$内的任一点$M$，都有一个确定的数量$f(M)$，那么称在这空间区域$G$内确定了一个数量场，
+一个数量场可以用一个数量函数$f(M)$表示；如果点$M$对应一个确定的矢量$\ve{F}(M)$，那么称在着空间区域$G$内确定了一个向量场，
+一个向量场可以用一个向量值函数$\ve{F}(M)$表示
+
+\subsection*{势函数与势场 Scalar potential}
+若矢量场$\ve{F}(M)$是某个数量函数$f(M)$的梯度（$\nabla f(M)=\ve{F}(M)$），则称$f(M)$是向量场$\ve{F}(M)$的一个势函数，
+并称向量场$\ve{F}(M)$为势场
+\bigskip
+\bigskip
+
+\section*{多元函数的极值及其求法}
+
+\bigskip
+\subsection*{多元函数的极值与最大最小值}
+设函数$z=f(P)$的定义域为$D$，$P_0$为$D$的内点，若存在$P_0$的某个邻域$U(P_0)\subset D$，使得对于该区间内异于
+$P_0$的任何点$P$，都有
+\[ f(P)<f(P_0) \]
+则称函数$f(P)$在点$P_0$有极大值$f(P_0)$，点$P_0$称为函数$f(P)$的极大值点；
+若存在$P_0$的某个邻域$U(P_0)\subset D$，使得对于该区间内异于
+$P_0$的任何点$P$，都有
+\[ f(P)>f(P_0) \]
+则称函数$f(P)$在点$P_0$有极小值$f(P_0)$，点$P_0$称为函数$f(P)$的极小值点；
+极大值与极小值统称为极值，使i函数取得极值的点称为极值点
+
+\subsection*{极值判断}
+设函数$z=f(P)$在点$P_0$具有偏导数，且在点$P_0$取得极值，那么$f(P)$在这个点的各个偏导数均为$0$
+
+\bigskip
+
+设函数$z=f(x,y)$在点$(x_0,y_0)$的某邻域内连续且有一阶及二阶连续偏导数，又$f_x(x_0,y_0)=0,f_y(x_0,y_0)=0$，令
+\[D={\renewcommand{\arraystretch}{1}\begin{vmatrix}f_{xx}&f_{xy}\\f_{yx}&f_{yy}\end{vmatrix}}\]
+则$f(x,y)$在点$(x_0,y_0)$处是否取得极值的条件如下：
+\begin{itemize}
+  \item $D>0$ 具有极值；$f_{xx}<0$为极大值，$f_{xx}>0$为极小值
+  \item $D<0$ 不具有极值 (saddle)
+  \item $D=0$ 均有可能，需另行判断
+\end{itemize}
+
+
+\subsection*{条件极值 拉格朗日乘数 Lagrange Multipliers}
+对于函数$f(P)$在满足条件$g(P)=0$下的极值点$P_0$需满足
+\[\nabla f(P_0)=\lambda\nabla g(P_0)\]
+其中$\lambda$为拉格朗日乘数
+
+拉格朗日乘数可以有个（每个对于一个限制条件）
+\bigskip
+\bigskip
+
+\section*{二元函数的泰勒公式}
+
+\bigskip
+设$z=f(x,y)$在点$(x_0,y_0)$的某一邻域内连续且有$(n+1)$阶连续偏导数，$(x_0+h,y_0+k)$为此领域内任一点，
+则有
+\[
+\begin{aligned}
+  f(x_0+h,y_0+k)
+  =&f(x_0,y_0)+
+  \left(h\frac{\partial}{\partial x}+k\frac{\partial}{\partial y}\right)f(x_0,y_0)+
+  \frac{1}{2!}{\left(h\frac{\partial}{\partial x}+k\frac{\partial}{\partial y}\right)}^2f(x_0,y_0)+\cdots+\\
+  &\frac{1}{n!}{\left(h\frac{\partial}{\partial x}+k\frac{\partial}{\partial y}\right)}^nf(x_0,y_0)+
+  \frac{1}{(n+1)!}{\left(h\frac{\partial}{\partial x}+k\frac{\partial}{\partial y}\right)}^{n+1}f(x_0+\theta h,y_0+\theta k)\quad(0<\theta<1)
+\end{aligned}
+\]
+其中记号
+\[
+{\left(h\frac{\partial}{\partial x}+k\frac{\partial}{\partial y}\right)}^m
+\Leftrightarrow
+\when{\sum^m_{p=0}\text{C}_m^ph^pk^{m-p}\frac{\partial^m f}{\partial x^p \partial y^{m-p}}}{(x_0,y_0)}
+\]
+
+\bigskip
+
+如果函数$f(x,y)$的偏导数$f_x$，$f_y$在某一区域内都恒为零，那么函数$f(x,y)$在该区域内为一常数
 
 
 
