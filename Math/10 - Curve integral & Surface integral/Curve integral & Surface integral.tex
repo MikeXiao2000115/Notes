@@ -1,0 +1,57 @@
+\documentclass[UTF8]{ctexart}
+
+\usepackage{geometry}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\usepackage{bm}
+
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+
+\special{papersize={18.1cm,25.7cm}}
+\geometry{left=1.5cm,right=0.5cm,top=2cm,bottom=1cm}
+\pagestyle{empty}
+
+\newcommand{\D}{{\text{d}\;\!}}
+\newcommand{\cross}{\times}
+\newcommand{\dif}[1]{{\text{d}\;\!#1}}
+\newcommand{\dev}[1]{{\frac{\text{d}}{\dif{#1}}\;\!}}
+\newcommand{\ve}[1]{{\bm{#1}}}
+\newcommand{\ven}[2]{{\left\langle#1,#2\right\rangle}}
+\newcommand{\veN}[3]{{\left\langle#1,#2,#3\right\rangle}}
+\newcommand{\ang}[2]{{(\widehat{\ve{#1},\ve{#2}})}}
+\newcommand{\abs}[1]{{\left|{#1}\right|}}
+\newcommand{\when}[2]{{\left.{#1}\right|_{#2}}}
+\newcommand{\dist}[2]{{\left\|\ve{#1}-\ve{#2}\right\|}}
+\newcommand{\norm}[1]{{\left\|#1\right\|}}
+\newcommand{\emplin}{\vspace{1em}}
+
+\begin{document}
+
+\section*{曲线积分 curve intergral}
+设$L$为$xOy$面内的一条光滑曲线弧，函数$f(x,y)$在$L$上有界，在$L$上任意插入一点列$M_1,M_2,\cdots,M_{n-1}$
+把$L$分成$n$个小段；设第$i$个小段的长度为$\Delta s_i$，又$(\xi_i,\eta_i)$为第$i$个小段上任意取定的一点，
+作积$f(\xi_i,\eta_i)\Delta s_i$，并作和$\sum^n_{i=1}f(\xi_i,\eta_i)\Delta s_i$，如果当各小弧段的长度的最大值
+$\lambda\to0$时，这和的极限总存在，且与曲线弧$L$的分法无关，那么称此极限为函数$f(x,y)$在曲线弧$L$上对弧长的曲线积分
+或第一类曲线积分，记作$\int_Lf(x,y)\dif{s}$，即
+\[\int_Lf(x,y)\dif{s}=\lim_{\lambda\to0}\sum^n_{i=1}f(\xi_i,\eta_i)\Delta s_i\]
+其中$f(x,y)$称为被积函数，$L$叫做积分弧段
+
+\emplin
+
+类似的情况可以扩展至三维
+\[\int_Lf(x,y,z)\dif{s}=\lim_{\lambda\to0}\sum^n_{i=1}f(\xi_i,\eta_i,\zeta_i)\Delta s_i\]
+
+\emplin
+
+\subsection*{性质}
+\begin{itemize}
+  \item 若曲线$L$可以被分为有限多条曲线$L_1,L_2,\cdots,L_n$，则
+  \[ \int_Lf(P)\dif{s}=\sum^n_{i=1}\int_{L_i}f(P)\dif{s} \]
+  \item 若曲线$L$为一闭合曲线，则将其记为$\displaystyle \oint_Lf(P)\dif{s}$
+  \item 
+\end{itemize}
+
+\end{document}
