@@ -218,3 +218,11 @@ TSWLatexianTemp*
 
 # expex forward references with \gathertags
 *-tags.tex
+
+#latex
+*.aux
+*.fdb_latexmk
+*.fls
+*.txt
+*.synctex
+*.xdv
