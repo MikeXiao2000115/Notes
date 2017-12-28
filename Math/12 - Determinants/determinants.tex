@@ -33,11 +33,148 @@
 
 \section*{二阶与三阶行列式}
 \subsection*{二阶行列式 Second-order determinant}
+记号$\displaystyle \begin{vmatrix}a_{11}&a_{12}\\a_{21}&a_{22}\end{vmatrix}$表示代数和$a_{11}a_{22}-a_{12}a_{21}$，称为二阶行列式，即
+\[\begin{vmatrix}a_{11}&a_{12}\\a_{21}&a_{22}\end{vmatrix}=a_{11}a_{22}-a_{12}a_{21}\]
+其中数$a_{11}$，$a_{22}$，$a_{12}$，$a_{21}$称为行列式的元素，横排叫做行，竖排叫做列；
+\textbf{元素$a_{ij}$的第一个下标$i$称为行标，表明该元素位于第$i$行，第二个下标$j$叫做列标，表明该元素位于第$j$列}；
+行列式是一个代数和
+
+这个规则称为“对角线法则”，把从$a_{11}$到$a_{22}$的连线叫做主对角线，把$a_{12}$到$a_{21}$的连线交副对角线
+
+\subsection*{二元线性方程}
+对于二元线性方程
+\[\left\{
+\begin{aligned}
+a_{11}x_1+a_{12}x_2=b_1\\
+a_{21}x_1+a_{22}x_2=b_2
+\end{aligned}
+\right.\]
+定义
+\[D=\begin{vmatrix}
+a_{11}&a_{12}\\
+a_{21}&a_{22}
+\end{vmatrix}
+\]
+\[
+D_1=\begin{vmatrix}
+b_1&a_{12}\\
+b_2&a_{22}
+\end{vmatrix}
+\quad,\quad
+D_2=\begin{vmatrix}
+a_{11}&b_1\\
+a_{21}&b_2
+\end{vmatrix}
+\]
+则二元线性方程组可改写为
+\[\left\{
+\begin{aligned}
+  Dx_1&=D_1\\
+  Dx_2&=D_2
+\end{aligned}
+\right.
+\]
+于是，当$D\ne0$时，该二元线性方程有唯一解
+\[x_1=\frac{D_1}{D}\quad x_2=\frac{D_2}{D}\]
 
 
 \subsection*{三阶行列式 Third-order determinant}
+记号$\displaystyle\begin{vmatrix}
+a_{11}&a_{12}&a_{13}\\
+a_{21}&a_{22}&a_{23}\\
+a_{31}&a_{32}&a_{33}
+\end{vmatrix}$表示代数和
+\[a_{11}a_{22}a_{33}+a_{12}a_{23}a_{31}+a_{13}a_{21}a_{32}
+-a_{13}a_{22}a_{31}-a_{12}a_{21}a_33-a{11}a_{23}a_{32}\]
+称为三阶行列式
+
+三阶行列式有6项，每一项均为不同行不同列的三个元素之积，在按一定法则冠以正负号
+
+\subsection*{三元线性方程组}
+类似于二元线性方程组，对于三元线性方程组
+\[
+\left\{
+\begin{aligned}
+  a_{11}x_1+a_{12}x_2+a_{13}x_3=b_1\\
+  a_{21}x_1+a_{22}x_2+a_{23}x_3=b_2\\
+  a_{31}x_1+a_{32}x_2+a_{33}x_3=b_3
+\end{aligned}
+\right.
+\]
+同时记
+\[
+D=
+\begin{vmatrix}
+  a_{11}&a_{12}&a_{13}\\
+  a_{21}&a_{22}&a_{23}\\
+  a_{31}&a_{32}&a_{33}
+\end{vmatrix}
+\quad,\quad
+D_1=
+\begin{vmatrix}
+  b_1&a_{12}&a_{13}\\
+  b_2&a_{22}&a_{23}\\
+  b_3&a_{32}&a_{33}
+\end{vmatrix}
+\]
+\[
+D_2=
+\begin{vmatrix}
+  a_{11}&b_1&a_{13}\\
+  a_{21}&b_2&a_{23}\\
+  a_{31}&b_3&a_{33}
+\end{vmatrix}
+\quad,\quad
+D_3=
+\begin{vmatrix}
+  b_1&a_{12}&b_1\\
+  b_2&a_{22}&b_2\\
+  b_3&a_{32}&b_3
+\end{vmatrix}
+\]
+若系数行列式$D\ne0$，则该方程组有唯一解
+\[x_1=\frac{D_1}{D}\quad x_2\frac{D_2}{D}\quad x_3=\frac{D_3}{D}\]
 
 
+\section*{$n$阶行列式}
+\subsection*{排列与逆序}
+由自然数$1,2,\cdots,n$组成的不重复的每一种有确定次序的排列，称为$n$级排列（简称为排列）
+
+\emplin
+
+在一个$n$级排列（$i_1i_2\cdots i_t\cdots i_s\cdots i_n$）中，若$i_t>i_s$，则称数$i_t$与数$i_s$构成一个逆序；一个$n$级排列中逆序的总数称为该排列的逆序数，
+记为$N(i_1i_2\cdots i_n)$
+
+即一个$n$级排列$i_1i_2\cdots i_n$中，设比$i_k$大的且排在$i_k$前的数共有$t_k$各，则$i_k$的逆序的个数为$t_k$，而该排列中所有自然数的逆序的个数之和就是这个排列的逆序数，即
+\[N(i_1i_2\cdots i_n)=\sum_{k=1}^nt_k\]
+
+\emplin
+
+\textbf{逆序数为奇数的排列称为奇排列；逆序数为偶数的排列称为偶排列}
+
+\subsection*{$n$阶行列式的定义}
+有$n^2$各元素$a_{ij}$组成的记号
+\[\begin{vmatrix}
+a_{11}&a_{12}&\cdots&a_{1n}\\
+a_{21}&a_{22}&\cdots&a_{2n}\\
+\vdots&\vdots&\ddots&\vdots\\
+a_{n1}&a_{n2}&\cdots&a_{nn}
+\end{vmatrix}\]
+称为$n$阶行列式，其中横排称为行，竖排称为列；它表示所有\textbf{取自不同行且不同列的$n$个元素的乘积$a_{1j_1}a_{2j_2}\cdots a_{nj_n}$}的代数和，
+其各项的符号为：\textbf{当该项的各个元素的行标按自然数排列后（$a_{1j_1}a_{2j_2}\cdots a_{nj_n}$），其对应的列标所构成的排列（$j_1j_2\cdots j_n$）
+是偶排列则符号取正，否则（是奇排列）则符号取负}，即
+\[\begin{vmatrix}
+a_{11}&a_{12}&\cdots&a_{1n}\\
+a_{21}&a_{22}&\cdots&a_{2n}\\
+\vdots&\vdots&\ddots&\vdots\\
+a_{n1}&a_{n2}&\cdots&a_{nn}
+\end{vmatrix}=
+\sum_{j_1j_2\cdots j_n}(-1)^{N(j_1j_2\cdots j_n)}a_{1j_1}a_{2j_2}\cdots a_{nj_n}
+\]
+其中$\displaystyle\sum_{j_1j_2\cdots j_n}$表示对所有$n$级排列$j_1j_2\cdots j_n$求和；行列式有时也简记为$\det(a_{ij})$或$\abs{a_{ij}}$，
+这里数$a_{ij}$称为行列式的元素，称
+\[(-1)^{N(j_1j_2\cdots j_n)}a_{1j_1}a_{2j_2}\cdots a_{nj_n}\]
+为行列式的一般项
 
 
 \end{document}
