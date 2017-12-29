@@ -136,12 +136,11 @@ D_3=
 \[x_1=\frac{D_1}{D}\quad x_2\frac{D_2}{D}\quad x_3=\frac{D_3}{D}\]
 
 
-\section*{$n$阶行列式}
-\subsection*{排列与逆序}
+\section*{排列}
+\subsection*{定义}
 由自然数$1,2,\cdots,n$组成的不重复的每一种有确定次序的排列，称为$n$级排列（简称为排列）
 
-\emplin
-
+\subsection*{逆序}
 在一个$n$级排列（$i_1i_2\cdots i_t\cdots i_s\cdots i_n$）中，若$i_t>i_s$，则称数$i_t$与数$i_s$构成一个逆序；一个$n$级排列中逆序的总数称为该排列的逆序数，
 记为$N(i_1i_2\cdots i_n)$
 
@@ -152,7 +151,22 @@ D_3=
 
 \textbf{逆序数为奇数的排列称为奇排列；逆序数为偶数的排列称为偶排列}
 
-\subsection*{$n$阶行列式的定义}
+\subsection*{对换}
+
+\textbf{在排列中，将任意两个元素对调，其余元素不动，这种作出新排列的方法称为对换；将两个相邻元素对换，称为相邻对换}
+
+\emplin
+
+\textbf{任意一个排列经过一次对换后，其奇偶性改变}
+
+\emplin
+
+奇排列经过奇数词对换后可变为自然数顺序排列，而偶排列经过偶数次对换后可变为自然数顺序排列
+
+$n$个自然数（$n>1$）共有$n!$个$n$级排列，其中奇偶排列各占一半
+
+\section*{$n$阶行列式}
+\subsection*{定义}
 有$n^2$各元素$a_{ij}$组成的记号
 \[\begin{vmatrix}
 a_{11}&a_{12}&\cdots&a_{1n}\\
@@ -175,6 +189,61 @@ a_{n1}&a_{n2}&\cdots&a_{nn}
 这里数$a_{ij}$称为行列式的元素，称
 \[(-1)^{N(j_1j_2\cdots j_n)}a_{1j_1}a_{2j_2}\cdots a_{nj_n}\]
 为行列式的一般项
+
+\subsection*{特点}
+\begin{itemize}
+  \item $n$阶行列式是$n!$项的代数和，被冠以正号与负号的项各占其一半
+  \item \textbf{行列式的本质是一个数，一个按照特殊定义规定的数}
+  \item 元素$a_{1j_1}a_{2j_2}\cdots a_{nj_n}$的符号为
+  \item 一阶行列式$\begin{vmatrix}a\end{vmatrix}=a$
+\end{itemize}
+
+\subsection*{特殊行列式与其计算}
+\begin{itemize}
+  \item \textbf{副对角线行列式}
+  \[\begin{vmatrix}
+  0&\cdots&0&a_{1n}\\
+  0&\cdots&a_{2(n-1)}&0\\
+  \vdots&\ddots&\vdots&\vdots\\
+  a_{n1}&\cdots&0&0
+  \end{vmatrix}
+  =(-1)^{\frac{n(n-1)}{2}}a_{1n}a_{2(n-1)}\cdots a_{n1}
+  \]
+  \item \textbf{对角行列式}
+  \[\begin{vmatrix}
+  a_{11}&0 & \cdots & 0\\
+  0&a_{22} & \cdots & 0\\
+  \vdots&\vdots&\ddots&\vdots\\
+  0&0&\cdots&a_{nn}
+  \end{vmatrix}
+  =a_{11}a_{22}\cdots a_{nn}\]
+  \item \textbf{上三角（形）行列式}
+  \[\begin{vmatrix}
+  a_{11}&a_{12}&\cdots&a_{1n}\\
+  0&a_{22}&\cdots&a_{2n}\\
+  \vdots&\vdots&\ddots&\vdots\\
+  0&0&\cdots&a_{nn}
+  \end{vmatrix}
+  =a_{11}a_{22}\cdots a_{nn}\]
+  \item \textbf{下三角（形）行列式}
+  \[\begin{vmatrix}
+  a_{11}&0&\cdots&0\\
+  a_{21}&a_{22}&\cdots&0\\
+  \vdots&\vdots&\ddots&\vdots\\
+  a_{n1}&a_{n2}&\cdots&a_{nn}\\
+  \end{vmatrix}
+  =a_{11}a_{22}\cdots a_{nn}\]
+  \item \textbf{反对称行列式}
+  \[\begin{vmatrix}
+  0&a_{12}&a_{13}&\cdots&a_{1n}\\
+  -a_{12}&0&a_{23}&\cdots&a_{2n}\\
+  -a_{13}&-a_{23}&0&\cdots&a_{3n}\\
+  \vdots&\vdots&\vdots&\ddots&\vdots\\
+  -a_{1n}&-a_{2n}&-a_{3n}&\cdots&0
+\end{vmatrix}
+= 0\quad \text{if }n\text{ is odd}\]
+\end{itemize}
+
 
 
 \end{document}
