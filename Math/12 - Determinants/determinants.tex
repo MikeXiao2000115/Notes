@@ -190,12 +190,18 @@ a_{n1}&a_{n2}&\cdots&a_{nn}
 \[(-1)^{N(j_1j_2\cdots j_n)}a_{1j_1}a_{2j_2}\cdots a_{nj_n}\]
 为行列式的一般项
 
-\subsection*{特点}
+\subsection*{要点}
 \begin{itemize}
   \item $n$阶行列式是$n!$项的代数和，被冠以正号与负号的项各占其一半
   \item \textbf{行列式的本质是一个数，一个按照特殊定义规定的数}
   \item 元素$a_{1j_1}a_{2j_2}\cdots a_{nj_n}$的符号为
   \item 一阶行列式$\begin{vmatrix}a\end{vmatrix}=a$
+  \item $n$阶行列式也定义为
+  \[D=\sum(-1)^Sa_{i_1j_1}a_{i_2j_2}\cdots a_{i_nj_n}\]
+  其中$S$为行标与列标的逆序之和，即
+  \[S=N(i_1i_2\cdots i_n)+N(j_1j_2\cdots j_n)\]
+  \item $n$阶行列式也定义为
+  \[D=\sum(-1)^{N(i_1i_2\cdots i_n)}a_{i_11}a_{i_22}\cdots a_{i_nn}\]
 \end{itemize}
 
 \subsection*{特殊行列式与其计算}
@@ -242,8 +248,200 @@ a_{n1}&a_{n2}&\cdots&a_{nn}
   -a_{1n}&-a_{2n}&-a_{3n}&\cdots&0
 \end{vmatrix}
 = 0\quad \text{if }n\text{ is odd}\]
+  \item \textbf{范德蒙 (Vandermonde)行列式}
+  \[D_n=\begin{vmatrix}
+  1&1&\cdots&1\\
+  x_1&x_2&\cdots&x_n\\
+  x_1^2&x_2^2&\cdots&x_n^2\\
+  \vdots&\vdots&\ddots&\vdots\\
+  x_1^{n-1}&x_2^{n-1}&\cdots&x_n^{n-1}
+  \end{vmatrix}
+  =\prod_{n\ge i\ge j\ge1}(x_i-x_j)
+  \]
+  \item
+  \[
+  \begin{vmatrix}
+  a&b&b&\cdots&b\\
+  b&a&b&\cdots&b\\
+  b&b&a&\cdots&b\\
+  \vdots&\vdots&\vdots&\ddots&\vdots\\
+  b&b&b&\cdots&a
+\end{vmatrix}=[a+(n+1)b](a-b)^{n-1}
+  \]
+  \item
+  \[
+  \begin{vmatrix}
+    a_{11}&\cdots&a_{1n}&0&\cdots&0\\
+    \vdots&\ddots&\vdots&\vdots&\ddots&\vdots\\
+    a_{n1}&\cdots&a_{nn}&0&\cdots&0\\
+    c_{11}&\cdots&c_{1n}&b_{11}&\cdots&b_{1n}\\
+    \vdots&\ddots&\vdots&\vdots&\ddots&\vdots\\
+    c_{n1}&\cdots&c_{nn}&b_{n1}&\cdots&b_{nn}
+  \end{vmatrix}=\begin{vmatrix}
+  a_{11}&\cdots&a_{1n}\\
+  \vdots&\ddots&\vdots\\
+  a_{n1}&\cdots&a_{nn}
+  \end{vmatrix}\begin{vmatrix}
+  b_{11}&\cdots&b_{1n}\\
+  \vdots&\ddots&\vdots\\
+  b_{n1}&\cdots&b_{nn}
+  \end{vmatrix}
+  \]
 \end{itemize}
 
+\subsection*{性质}
+\begin{itemize}
+  \item \textbf{转置}
 
+  将行列式$D$的行与列呼唤后得到的行列式，称为$D$的转置行列式，记为$D^T$或$D'$，即若$\displaystyle D=
+  \begin{vmatrix}
+  a_{11}&a_{12}&\cdots&a_{1n}\\
+  a_{21}&a_{22}&\cdots&a_{2n}\\
+  \vdots&\vdots&\ddots&\vdots\\
+  a_{n1}&a_{n2}&\cdots&a_{nn}
+  \end{vmatrix}$，则$\displaystyle D^T=
+  \begin{vmatrix}
+  a_{11}&a_{21}&\cdots&a_{n1}\\
+  a_{12}&a_{22}&\cdots&a_{n2}\\
+  \vdots&\vdots&\ddots&\vdots\\
+  a_{1n}&a_{2n}&\cdots&a_{nn}
+  \end{vmatrix}$
 
+  \item \textbf{行列式与其转置行列式相等，即$D=D^T$}
+  \item \textbf{交换行列式的两行（列），行列式变号}
+
+  交换$i$，$j$两行（列）记为，$r_i\leftrightarrow r_j$($c_i\leftrightarrow c_j$)
+  \item 若行列式中有两行（或两列）的对应元素相同，则该行列式为$0$
+  \item \textbf{用数$k$乘行列式的某一行（列），等于用数$k$乘该行列式}，即
+  \[D_1=\begin{vmatrix}
+  a_{11}&a_{12}&a_{13}&\cdots&a_{1n}\\
+  \vdots&\vdots&\vdots&\ddots&\vdots\\
+  ka_{i1}&ka_{i2}&ka_{i3}&\cdots&ka_{in}\\
+  \vdots&\vdots&\vdots&\ddots&\vdots\\
+  a_{n1}&a_{n2}&a_{n3}&\cdots&a_{nn}
+  \end{vmatrix}
+  =k\begin{vmatrix}
+  a_{11}&a_{12}&a_{13}&\cdots&a_{1n}\\
+  \vdots&\vdots&\vdots&\ddots&\vdots\\
+  a_{i1}&a_{i2}&a_{i3}&\cdots&a_{in}\\
+  \vdots&\vdots&\vdots&\ddots&\vdots\\
+  a_{n1}&a_{n2}&a_{n3}&\cdots&a_{nn}
+  \end{vmatrix}=kD
+  \]
+  \item 行列式的某一行（列）中所有元素的公因子可以提到行列式符号外面
+  \item 行列式中若有两行（列）元素对应成比例，则该行列式为$0$
+  \item \textbf{若行列式的某一行（列）的元素都是两数之和，即
+  \[D=\begin{vmatrix}
+  a_{11}&a_{12}&a_{13}&\cdots&a_{1n}\\
+  \vdots&\vdots&\vdots&\ddots&\vdots\\
+  b_{i1}+c_{i1}&b_{i2}+c_{i2}&b_{i3}+c_{i3}&\cdots&b_{in}+c_{in}\\
+  \vdots&\vdots&\vdots&\ddots&\vdots\\
+  a_{n1}&a_{n2}&a_{n3}&\cdots&a_{nn}
+  \end{vmatrix}
+  \]
+  则有，
+  \[D=\begin{vmatrix}
+  a_{11}&a_{12}&a_{13}&\cdots&a_{1n}\\
+  \vdots&\vdots&\vdots&\ddots&\vdots\\
+  b_{i1}&b_{i2}&b_{i3}&\cdots&b_{in}\\
+  \vdots&\vdots&\vdots&\ddots&\vdots\\
+  a_{n1}&a_{n2}&a_{n3}&\cdots&a_{nn}
+  \end{vmatrix}+\begin{vmatrix}
+  a_{11}&a_{12}&a_{13}&\cdots&a_{1n}\\
+  \vdots&\vdots&\vdots&\ddots&\vdots\\
+  c_{i1}&c_{i2}&c_{i3}&\cdots&c_{in}\\
+  \vdots&\vdots&\vdots&\ddots&\vdots\\
+  a_{n1}&a_{n2}&a_{n3}&\cdots&a_{nn}
+  \end{vmatrix}=D_1+D_2
+  \]
+  }
+  \item \textbf{将行列式的某一行（列）的所有元素都乘以数$k$后加到另一行（列）对应位置的元素上，行列式的值不变}，即
+  \[
+  D=\begin{vmatrix}
+  a_{11}&\cdots&a_{1i}&\cdots&a_{1j}&\cdots&a_{1n}\\
+  a_{21}&\cdots&a_{2i}&\cdots&a_{2j}&\cdots&a_{2n}\\
+  \vdots&\ddots&\vdots&\ddots&\vdots&\ddots&\vdots\\
+  a_{n1}&\cdots&a_{ni}&\cdots&a_{nj}&\cdots&a_{n}
+  \end{vmatrix}=\begin{vmatrix}
+  a_{11}&\cdots&a_{1i}+ka_{1j}&\cdots&a_{1j}&\cdots&a_{1n}\\
+  a_{21}&\cdots&a_{2i}+ka_{2j}&\cdots&a_{2j}&\cdots&a_{2n}\\
+  \vdots&\ddots&\vdots&\ddots&\vdots&\ddots&\vdots\\
+  a_{n1}&\cdots&a_{ni}+ka_{nj}&\cdots&a_{nj}&\cdots&a_{n}
+  \end{vmatrix}\quad(i\ne j)
+  \]
+
+  以数$k$乘以第$j$行加到第$i$行上记为$r_i+kr_j$;以数$k$乘以第$j$列加到第$i$列上记为$c_i+kc_j$
+\end{itemize}
+
+\subsection*{利用行列式三角化计算其值}
+\begin{enumerate}
+  \item 若$a_{11}=0$，则检查第一行中是否有非零元素，若没有，则该行列式值为零，若有非零元素则将其所在列与第一列对换，使得第一个元素不为零（行列式需变号）
+  \item 用第一行乘上适当的数加到其余行上，使除$a_{11}$外第一列的元素全为$0$，即$\displaystyle r_i+(-\frac{a_{i1}}{a_{11}})r_1\quad(i\ne1)$
+  \item 对于所得行列式除第一行与第一列的低一阶的行列式重复步骤1\&2，直到所得行列式为一上三角行列式
+  \item 该上三角行列式的对角线上元素的乘积即是所求行列式的值
+\end{enumerate}
+
+\section*{行列式按行（列）展开}
+\subsection*{代数余子式}
+在$n$阶行列式$D$中，去掉元素$a_{ij}$所在的行与列（第$i$行与第$j$列）后，余下的$n-1$阶行列式，称为$D$中元素$a_{ij}$的余子式，记为$M_{ij}$；
+再记$a_{ij}=(-1)^{i+j}M_{ij}$，称$a_{ij}$为元素$a_{ij}$的代数余子式
+
+\emplin
+\emplin
+\emplin
+
+在$n$阶行列式$D$中，任一选定$k$行与$k$列（$1\le k\le n$）$r_{i_1},\cdots,r_{i_k}$与$c_{j_1},\cdots,c_{j_k}$，
+位于这些行与列交叉处的$k^2$个元素按原有顺序构成一个新的$k$阶行列式$\displaystyle M=\begin{vmatrix}a_{i_1j_1}&\cdots&a_{i_1j_k}\\\vdots&\ddots&\vdots\\a_{i_kj_1}&\cdots&a_{i_kj_k}\end{vmatrix}$，
+称其为$D$的一个\textbf{$k$阶子式}；
+划去这$k$行与$k$列，余下的元素按原有顺序构成一个新的$n-k$阶行列式，在其前面冠以符号$(-1)^{i_1+\cdots i_k+j_1+\cdots j_k}$，称为\textbf{$M$的代数余子式}
+\subsection*{代数余子式与行列式的值}
+一个$n$阶行列式$D$，若其中第$i$行所有元素除$a_{ij}$外都为零，则该行列式等于$a_{ij}$与它的代数余子式$A_{ij}$的乘积，即$D=a_{ij}A_{ij}$
+
+\emplin
+
+\textbf{行列式等于它的任一行或列的各元素与其对应的代数余子式乘积之和}，即
+\[D=a_{i1}A_{i1}+a_{i2}A_{i2}+\cdots+a_{in}A_{in}=a_{1j}A_{1j}+a_{2j}A_{2j}+\cdots+a_{nj}A_{nj}\]
+
+\emplin
+
+行列式某一行（列）的元素与另一行（列）的对应元素的代数余子式乘积之和等于零，即
+\[a_{i1}A_{j1}+a_{i2}A_{j2}+\cdots+a_{in}A_{jn}=a_{1i}A_{1j}+a_{2i}A_{2j}+\cdots+a_{ni}A_{nj}=0\quad(i\ne j)\]
+
+\subsection*{拉普拉斯定理 Laplace expansion}
+在$n$阶行列式$D$中，任意取定$k$行（列）（$a\le k\le n-1$），有这$k$行（列）组成的所有$k$阶子式与它们的代数余子式的乘积之和等于行列式$D$
+
+\section*{克莱姆法则 Cramer's Rule}
+含有$n$给未知数$x_1,x_2,\cdots,x_n$的线性方程组
+\[\left\{
+\begin{aligned}
+a_{11}x_1+a_{12}x_2+\cdots+a_{1n}x_n=b_1\\
+a_{21}x_1+a_{22}x_2+\cdots+a_{2n}x_n=b_2\\
+\cdots\cdots\cdots\cdots\cdots\cdots\cdots\cdots\cdots\cdots\cdots\\
+a_{n1}x_1+a_{n2}x_2+\cdots+a_{nn}x_n=b_n
+\end{aligned}
+\right.\]
+称为\textbf{$n$元线性方程组}；其右端常数$b_1,b_2,\cdots,b_n$不全为零时，称其为\textbf{非齐次线性方程组}，当$b_1,b_2,\cdots,b_n$全为零时，
+称为\textbf{齐次线性方程组}，即
+\[\left\{
+\begin{aligned}
+a_{11}x_1+a_{12}x_2+\cdots+a_{1n}x_n=0\\
+a_{21}x_1+a_{22}x_2+\cdots+a_{2n}x_n=0\\
+\cdots\cdots\cdots\cdots\cdots\cdots\cdots\cdots\cdots\cdots\cdots\\
+a_{n1}x_1+a_{n2}x_2+\cdots+a_{nn}x_n=0
+\end{aligned}
+\right.\]
+
+将它的系数$a_{ij}$构成的行列式称为该方程组的\textbf{系数行列式$D$}，即
+\[
+D=\begin{vmatrix}
+a_{11}&a_{12}&\cdots&a_{1n}\\
+a_{21}&a_{22}&\cdots&a_{2n}\\
+\vdots&\vdots&\ddots&\vdots\\
+a_{n1}&a_{n2}&\cdots&a_{nn}
+\end{vmatrix}
+\]
+
+若线性方程组的系数行列式$D\ne0$，则线性方程组有唯一解，其解为
+\[x_j=\frac{D_j}{D}\]
+其中$D_j$是将$D$中第$j$列元素$a_{1j},a_{2j},\cdots,a_{nj}$对应地替换成常数$b_1,b_2,\cdots,b_n$，而其余项保持不变所组成的行列式
 \end{document}
