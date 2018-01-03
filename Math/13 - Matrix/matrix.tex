@@ -1,0 +1,389 @@
+\documentclass[UTF8]{ctexart}
+
+\usepackage{geometry}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{esint}
+\usepackage{yhmath}
+\usepackage{bm}
+
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+
+\special{papersize={18.1cm,25.7cm}}
+\geometry{left=1.5cm,right=0.5cm,top=2cm,bottom=1cm}
+\pagestyle{empty}
+
+\newcommand{\D}{{\text{d}\;\!}}
+\newcommand{\cross}{\times}
+\newcommand{\dif}[1]{{\mathrm{d}\;\!#1}}
+\newcommand{\dev}[1]{{\frac{\text{d}}{\dif{#1}}\;\!}}
+\newcommand{\ve}[1]{{\bm{#1}}}
+\newcommand{\mat}[1]{\ve{#1}}
+\newcommand{\ven}[2]{{\left\langle#1,#2\right\rangle}}
+\newcommand{\veN}[3]{{\left\langle#1,#2,#3\right\rangle}}
+\newcommand{\ang}[2]{{(\widehat{\ve{#1},\ve{#2}})}}
+\newcommand{\abs}[1]{{\left|{#1}\right|}}
+\newcommand{\when}[2]{{\left.{#1}\right|_{#2}}}
+\newcommand{\dist}[2]{{\left\|\ve{#1}-\ve{#2}\right\|}}
+\newcommand{\norm}[1]{{\left\|#1\right\|}}
+\newcommand{\emplin}{\vspace{1em}}
+
+\begin{document}
+
+\section*{矩阵的概念}
+由$m\times n$个数$a_{ij}$排成的$m$行$n$列的数表
+\[\begin{matrix}
+a_{11}&a_{12}&\cdots&a_{1n}\\
+a_{21}&a_{22}&\cdots&a_{2n}\\
+\vdots&\vdots&\ddots&\vdots\\
+a_{m1}&a_{m2}&\cdots&a_{mn}
+\end{matrix}\]
+称为$m$行$n$列矩阵，简称$m\times n$矩阵，为表示一个整体，总是加一个括弧，并用大写黑体字母表示它，记为
+\[\mat{A}=
+\begin{bmatrix}
+a_{11}&a_{12}&\cdots&a_{1n}\\
+a_{21}&a_{22}&\cdots&a_{2n}\\
+\vdots&\vdots&\ddots&\vdots\\
+a_{m1}&a_{m2}&\cdots&a_{mn}
+\end{bmatrix}\]
+这$m\times n$个数称为矩阵$\mat{A}$的元素，$a_{ij}$称为矩阵$\mat{A}$的第$i$行第$j$列的元素，一个$m\times n$矩阵$\mat{A}$也可简记为
+\[\mat{A}=\mat{A}_{m\times n}=(a_{ij})_{m\times n}\text{ or }\mat{A}=(a_{ij})\]
+
+\emplin
+
+如果矩阵$\mat{A}$与$\mat{B}$的行数及列数均相同，且对应元素相等，则称矩阵$\mat{A}$与矩阵$\mat{B}$相等，记为$\mat{A}=\mat{B}$
+
+\subsection*{几种特殊矩阵}
+\begin{itemize}
+  \item \textbf{实矩阵}
+
+  元素均为实数的矩阵
+  \item \textbf{复矩阵}
+
+  元素为复数的矩阵
+  \item \textbf{非负矩阵}
+
+  元素均为非负数的矩阵
+  \item \textbf{$n$阶方阵}
+
+  若矩阵$\mat{A}$的行数与列数都等于$n$，则称$\mat{A}$为$n$阶方阵，记为$\mat{A}_n$
+  \item \textbf{同型矩阵}
+
+  如果两个矩阵具有相同的行数与相同的列数，则称这两个矩阵为同型矩阵
+  \item \textbf{零矩阵}
+
+  所有元素均为零的矩阵，记为$\mat{O}$
+  \item \textbf{$n$阶单位矩阵}
+
+  $n$阶方阵$\displaystyle \begin{bmatrix}
+  1&0&\cdots&0\\
+  0&1&\cdots&0\\
+  \vdots&\vdots&\ddots&\vdots\\
+  0&0&\cdots&1
+  \end{bmatrix}$，记为
+  $\mat{E}=\mat{E}_n\text{ or }\mat{I}=\mat{I}_n$
+  \item \textbf{行矩阵\&行向量}
+
+  只有一行的矩阵$\displaystyle\begin{bmatrix}a_1&a_2&\cdots&a_n\end{bmatrix}$，
+  为避免元素混淆，也记为$\displaystyle\begin{bmatrix}a_1,&a_2,&\cdots,&a_n\end{bmatrix}$
+  \item \textbf{列矩阵\&列向量}
+
+  只有一列的矩阵$\displaystyle\begin{bmatrix}b_1\\b_2\\\vdots\\b_m\end{bmatrix}$
+  \item \textbf{$n$阶对角矩阵}
+
+  $n$阶方阵$\displaystyle \begin{bmatrix}
+  \lambda_1&0&\cdots&0\\
+  0&\lambda_2&\cdots&0\\
+  \vdots&\vdots&\ddots&\vdots\\
+  0&0&\cdots&\lambda_n
+  \end{bmatrix}$，也可记为
+  $\mat{A}=\text{diag}(\lambda_1,\lambda_2,\cdots,\lambda_n)$
+  \item \textbf{$n$阶数量矩阵}
+
+  当一个$n$阶对角矩阵$\mat{A}$的对角元素全部等于某一数$a$是，即$\mat{A}=\text{diag}(a,a,\cdots,a)=a\mat{I}$
+\end{itemize}
+
+\section*{矩阵的运算}
+\begin{itemize}
+  \item \textbf{取负}
+
+  设矩阵$\mat{A}=(a_{ij})$，记$-\mat{A}=(-a_{ij})$，称$-\mat{A}$为矩阵$\mat{A}$的\textbf{负矩阵}
+  \item \textbf{加法}
+
+  设有两$m\times n$的同型矩阵$\mat{A}=(a_{ij})$和$\mat{B}=(b_{ij})$，矩阵$\mat{A}$与$\mat{B}$的和记作$\mat{A}+\mat{B}$，规定为
+  \[\mat{A}+\mat{B}=(a_{ij}+b_{ij})=\begin{bmatrix}
+  a_{11}+b_{11}&a_{12}+b_{12}&\cdots&a_{1n}+b_{1n}\\
+  a_{21}+b_{21}&a_{22}+b_{22}&\cdots&a_{2n}+b_{2n}\\
+  \vdots&\vdots&\ddots&\vdots\\
+  a_{m1}+b_{m1}&a_{m2}+b_{m2}&\cdots&a_{mn}+b_{mn}
+  \end{bmatrix}\]
+
+  \item \textbf{减法}
+
+  由于$\mat{A}+(-\mat{A})=\mat{O}$，则可定义减法$\mat{A}-\mat{B}=\mat{A}+(-\mat{B})$
+
+  \item \textbf{数乘运算}
+
+  数$k$与$m\times n$矩阵$\mat{A}$的乘积记作$k\mat{A}$或$\mat{A}k$，定义为
+  \[k\mat{A}=\mat{A}k=(ka_{ij})=\begin{bmatrix}
+  ka_{11}&ka_{12}&\cdots&ka_{1n}\\
+  ka_{21}&ka_{22}&\cdots&ka_{2n}\\
+  \vdots&\vdots&\ddots&\vdots\\
+  ka_{m1}&ka_{m2}&\cdots&ka_{mn}
+  \end{bmatrix}\]
+
+  \item \textbf{线性运算}
+
+  矩阵的加法与数乘两种运算统称为矩阵的线性运算，它们满足规律
+  \begin{itemize}
+    \item[>] $\displaystyle \mat{A}+\mat{B}=\mat{B}+\mat{A}$
+    \item[>] $\displaystyle (\mat{A}+\mat{B})+\mat{C}=\mat{A}+(\mat{B}+\mat{C})$
+    \item[>] $\displaystyle \mat{A}+\mat{O}=\mat{A}$
+    \item[>] $\displaystyle \mat{A}+(-\mat{A})=\mat{O}$
+    \item[>] $\displaystyle 1\mat{A}=\mat{A}$
+    \item[>] $\displaystyle k(l\mat{A})=(kl)\mat{A}$
+    \item[>] $\displaystyle (k+l)\mat{A}=k\mat{A}+l\mat{A}$
+    \item[>] $\displaystyle k(\mat{A}+\mat{B})=k\mat{A}+k\mat{B}$
+  \end{itemize}
+
+  \item \textbf{乘法}
+
+  设
+  \[\mat{A}=(a_{ij})_{m\times s}=\begin{bmatrix}
+  a_{11}&a_{12}&\cdots&a_{1s}\\
+  a_{21}&a_{22}&\cdots&a_{2s}\\
+  \vdots&\vdots&\ddots&\vdots\\
+  a_{m1}&a_{m2}&\cdots&a_{ms}
+  \end{bmatrix}\quad
+  \mat{B}=(b_{ij})_{s\times n}=\begin{bmatrix}
+  b_{11}&b_{12}&\cdots&b_{1n}\\
+  b_{21}&b_{22}&\cdots&b_{2n}\\
+  \vdots&\vdots&\ddots&\vdots\\
+  b_{s1}&b_{s2}&\cdots&b_{sn}
+  \end{bmatrix}\]
+  矩阵$\mat{A}$与矩阵$\mat{B}$的乘积记作$\mat{A}\mat{B}$，定义为
+  \[\mat{A}\mat{B}=(c_{ij})_{m\times n}=\begin{bmatrix}
+  c_{11}&c_{12}&\cdots&c_{1n}\\
+  c_{21}&c_{22}&\cdots&c_{2n}\\
+  \vdots&\vdots&\ddots&\vdots\\
+  c_{m1}&c_{m2}&\cdots&c_{mn}
+  \end{bmatrix}\quad\left(
+  c_{ij}=\sum_{k=1}^sa_{ik}b_{kj}
+  \right)\]
+  若$\mat{C}=\mat{A}\mat{B}$，则矩阵$\mat{C}$的元素$c_{ij}$即为矩阵$\mat{A}$第$i$行元素与矩阵$\mat{B}$第$j$行元素对应元素乘积之和，即
+  \[c_{ij}=
+  \begin{bmatrix}
+    a_{i1} & a_{i2} & \cdots & a_{is}
+  \end{bmatrix}
+  \begin{bmatrix}
+    b_{1j}\\
+    b_{2j}\\
+    \vdots\\
+    b_{sj}
+  \end{bmatrix}
+  =a_{i1}b_{1j}+a_{i2}b_{2j}+\cdots+a_{is}b_{sj}
+  =\sum_{k=1}^sa_{ik}b_{kj}
+  \]
+
+  \emplin
+
+  显然$\mat{A}\mat{B}\ne\mat{B}\mat{A}$（有时两者中只有一个有定义）
+
+  两非零矩阵的乘积可能为零矩阵，故不能从$\mat{A}\mat{B}=\mat{O}$得出$\mat{A}\text{ or }\mat{B}=\mat{O}$
+
+  矩阵乘法一般也不满足消去律，即不能从$\mat{A}\mat{C}=\mat{B}\mat{C}$得出$\mat{A}=\mat{B}$
+
+  \emplin
+
+  矩阵乘法满足运算规则（若有定义）
+  \begin{itemize}
+    \item[>] $\displaystyle (\mat{A}\mat{B})\mat{C}=\mat{A}(\mat{B}\mat{C})$
+    \item[>] $\displaystyle (\mat{A}+\mat{B})\mat{C}=\mat{A}\mat{C}+\mat{B}\mat{C}$
+    \item[>] $\displaystyle \mat{C}(\mat{A}+\mat{B})=\mat{C}\mat{A}+\mat{C}\mat{B}$
+    \item[>] $\displaystyle k(\mat{A}\mat{B})=(k\mat{A})\mat{B}=\mat{A}(k\mat{B})$
+  \end{itemize}
+
+  \item \textbf{可交换}
+
+  如果两矩阵相乘，有$\mat{A}\mat{B}=\mat{B}\mat{A}$，则称矩阵$\mat{A}$与矩阵$\mat{B}$可交换，简称$\mat{A}$与$\mat{B}$可换
+
+  （对于单位矩阵有$\mat{I}_m\mat{A}_{m\times n}=\mat{A}_{m\times n}\mat{I}_n=\mat{A}_{m\times n}$）
+
+  \item \textbf{转置}
+
+  把矩阵$\mat{A}$的行换成同序数的列所得到的新矩阵称为$\mat{A}$的转置矩阵，记作$\mat{A}^T\text{ or }\mat{A}'$
+
+  即若$\displaystyle\mat{A}=\begin{bmatrix}
+  a_{11}&a_{12}&\cdots&a_{1n}\\
+  a_{21}&a_{22}&\cdots&a_{2n}\\
+  \vdots&\vdots&\ddots&\vdots\\
+  a_{m1}&a_{m2}&\cdots&a_{mn}
+  \end{bmatrix}$，则$\displaystyle\mat{A}^T=\begin{bmatrix}
+  a_{11}&a_{21}&\cdots&a_{m1}\\
+  a_{12}&a_{22}&\cdots&a_{m2}\\
+  \vdots&\vdots&\ddots&\vdots\\
+  a_{1n}&a_{2n}&\cdots&a_{mn}
+  \end{bmatrix}$
+
+  \emplin
+
+  矩阵的转置满足运算规则（若有定义）
+  \begin{itemize}
+    \item[>] $\displaystyle (\mat{A}^T)^T=\mat{A}$
+    \item[>] $\displaystyle (\mat{A}+\mat{B})^T=\mat{A}^T+\mat{B}^T$
+    \item[>] $\displaystyle (k\mat{A})^T=k\mat{A}^t$
+    \item[>] $\displaystyle (\mat{A}\mat{B})^T=\mat{B}^T\mat{A}^T$
+  \end{itemize}
+
+  \item \textbf{方阵的幂}
+
+  设方阵$\mat{A}=(a_{ij})_{n\times n}$，规定
+  \[\mat{A}^0=\mat{I}\text{, }\mat{A}^k=\overbrace{\mat{A}\cdot\mat{A}\cdot\cdots\cdot\mat{A}}^{k\text{ of }\mat{A}}\]
+
+  \emplin
+
+  矩阵的幂满足运算规则
+  \begin{itemize}
+    \item[>] $\displaystyle \mat{A}^m\mat{A}^n=\mat{A}^{m+n}$
+    \item[>] $\displaystyle (\mat{A}^m)^n=\mat{A}^{mn}$
+  \end{itemize}
+
+  \item \textbf{方阵的行列式}
+
+  由$n$阶方阵$\mat{A}$的元素所构成的行列式（各元素的位置不变），称为方阵$\mat{A}$的行列式，记作
+  \[\abs{\mat{A}}\text{ or }\det\mat{A}\]
+
+  \emplin
+
+  矩阵$\mat{A}$的行列式$\det\mat{A}$满足运算规则（其中$\mat{A}$与$\mat{B}$同为$n$阶方阵）
+  \begin{itemize}
+    \item[>] $\displaystyle \det\mat{A}^T=\det\mat{A}$
+    \item[>] $\displaystyle \det(k\mat{A})=k^n\det\mat{A}$
+    \item[>] $\displaystyle \det(\mat{A}\mat{B})=\det\mat{A}\det\mat{B}$
+    \item[>] $\displaystyle \det(\mat{A}\mat{B})=\det(\mat{B}\mat{A})$
+  \end{itemize}
+
+  \item \textbf{对称矩阵}
+
+  设$\mat{A}$为$n$阶方阵，如果$\mat{A}^T=\mat{A}$，即$a_{ij}=a_{ji}$，则称$\mat{A}$为对称矩阵
+
+  \item \textbf{反对称矩阵}
+
+  设$\mat{A}$为$n$阶方阵，如果$\mat{A}^T=-\mat{A}$，即$a_{ij}=-a_{ji}$，则称$\mat{A}$为反对称矩阵
+
+  \item \textbf{共轭矩阵}
+
+  设$\mat{A}=(a_{ij})$为复矩阵，记$\overline{\mat{A}}=(\overline{a_{ij}})$，其中$\overline{a_{ij}}$为$a_{ij}$的共轭复数，
+  称$\overline{\mat{A}}$为$\mat{A}$的共轭矩阵
+
+  \emplin
+
+  \begin{itemize}
+    \item[>] $\displaystyle \overline{\mat{A}+\mat{B}}=\overline{\mat{A}}+\overline{\mat{B}}$
+    \item[>] $\displaystyle \overline{\lambda\mat{A}}=\overline{\lambda}\overline{\mat{A}}$
+    \item[>] $\displaystyle \overline{\mat{A}\mat{B}}=\overline{\mat{A}}\overline{\mat{B}}$
+    \item[>] $\displaystyle \overline{(\mat{A}^T)}=(\overline{\mat{A}})^T$
+  \end{itemize}
+\end{itemize}
+
+\subsection*{逆矩阵}
+
+对于一个$n$阶方阵$\mat{A}$，如果存在一个$n$阶方阵$\mat{B}$，使得$\mat{A}\mat{B}=\mat{B}\mat{A}=\mat{I}$，则称方阵$\mat{A}$为可逆矩阵，
+而方阵$\mat{B}$称为$\mat{A}$的逆矩阵
+
+\textbf{若矩阵$\mat{A}$是可逆的，则$\mat{A}$的逆矩阵是唯一的，记为$\mat{A}^{-1}$}
+
+\emplin
+
+如果$n$阶方阵$\mat{A}$的行列式$\det\mat{A}\ne0$，则称$\mat{A}$为非奇异的，否则称$\mat{A}$为奇异的
+
+
+
+
+\section*{线性方程组的矩阵表示}
+对于线性方程组
+\[\left\{
+\begin{aligned}
+a_{11}x_1+a_{12}x_2+\cdots+a_{1n}x_n&=b_1\\
+a_{21}x_1+a_{22}x_2+\cdots+a_{2n}x_n&=b_2\\
+\cdots\cdots\cdots\cdots\cdots\cdots\cdots\cdots\cdots&\cdots\cdots\\
+a_{m1}x_1+a_{m2}x_2+\cdots+a_{mn}x_n&=b_m
+\end{aligned}
+\right.\]
+若记
+$\displaystyle\mat{A}=\begin{bmatrix}
+a_{11}&a_{12}&\cdots&a_{1n}\\
+a_{21}&a_{22}&\cdots&a_{2n}\\
+\vdots&\vdots&\ddots&\vdots\\
+a_{m1}&a_{m2}&\cdots&a_{mn}
+\end{bmatrix}$，
+$\displaystyle\mat{x}=\begin{bmatrix}
+x_1\\
+x_2\\
+\vdots\\
+x_n
+\end{bmatrix}$，
+$\displaystyle\mat{b}=\begin{bmatrix}
+b_1\\
+b_2\\
+\vdots\\
+b_m
+\end{bmatrix}$，
+则利用矩阵的乘法，线性方程组可表示为
+\[\mat{A}\mat{x}=\mat{b}\]
+其中$\mat{A}$称为方程组的系数矩阵，方程$\mat{A}\mat{x}=\mat{b}$称为矩阵方程
+
+如果$x_j=c_j$是方程组的解，记列矩阵$\mat{\eta}=\begin{bmatrix}
+c_1\\
+c_2\\
+\vdots\\
+c_n
+\end{bmatrix}$，则$\mat{A}\mat{\eta}=\mat{b}$这是也称$\mat{\eta}$是矩阵方程的解；反之如果$\mat{\eta}$是矩阵方程的解，
+既有矩阵等式$\mat{A}\mat{\eta}=\mat{b}$成立，则$\mat{x}=\mat{\eta}$，即$x_j=c_j$也是线性方程组的解
+
+\section*{线性变换}
+变量$x_1,x_2,\cdots,x_n$与变量$y_1,y_2,\cdots,y_m$之间的关系式
+\[\left\{
+\begin{aligned}
+y_1&=a_{11}x_1+a_{12}x_2+\cdots+a_{1n}x_n\\
+y_2&=a_{21}x_1+a_{22}x_2+\cdots+a_{2n}x_n\\
+\cdots&\cdots\cdots\cdots\cdots\cdots\cdots\cdots\cdots\cdots\cdots\\
+y_m&=a_{m1}x_1+a_{m2}x_2+\cdots+a_{mn}x_n
+\end{aligned}
+\right.\]
+称为从变量$x_1,x_2,\cdots,x_n$到变量$y_1,y_2,\cdots,y_m$的线性变换，其中$a_{ij}$为常数；线性变换的系数$a_{ij}$构成的矩阵
+$\mat{A}=(a_{ij})_{m\times n}$称为线性变换的系数矩阵
+
+若记
+$\displaystyle\mat{A}=\begin{bmatrix}
+a_{11}&a_{12}&\cdots&a_{1n}\\
+a_{21}&a_{22}&\cdots&a_{2n}\\
+\vdots&\vdots&\ddots&\vdots\\
+a_{m1}&a_{m2}&\cdots&a_{mn}
+\end{bmatrix}$，
+$\displaystyle\mat{x}=\begin{bmatrix}
+x_1\\
+x_2\\
+\vdots\\
+x_n
+\end{bmatrix}$，
+$\displaystyle\mat{y}=\begin{bmatrix}
+y_1\\
+y_2\\
+\vdots\\
+y_m
+\end{bmatrix}$，
+则线性变换关系是可表示为矩阵形式
+\[\mat{y}=\mat{A}\mat{x}\]
+
+当一线性变换的系数矩阵为单位矩阵$\mat{I}$式，线性变换$\mat{y}=\mat{I}\mat{x}$称为恒等变换，因为$\mat{x}=\mat{I}\mat{x}$
+
+\textbf{线性变换实际上构建了一种从矩阵$\mat{x}$到矩阵$\mat{A}\mat{x}$的矩阵变换关系$\mat{x}\to\mat{A}\mat{x}$}
+
+
+
+
+
+\end{document}
