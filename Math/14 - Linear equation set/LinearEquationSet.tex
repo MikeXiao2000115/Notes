@@ -1,0 +1,190 @@
+\documentclass[UTF8]{ctexart}
+
+\usepackage{geometry}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{esint}
+\usepackage{yhmath}
+\usepackage{bm}
+
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+
+\special{papersize={18.1cm,25.7cm}}
+\geometry{left=1.5cm,right=0.5cm,top=2cm,bottom=1cm}
+\pagestyle{empty}
+
+\setcounter{MaxMatrixCols}{20}
+
+\newcommand{\D}{{\text{d}\;\!}}
+\newcommand{\cross}{\times}
+\newcommand{\dif}[1]{{\mathrm{d}\;\!#1}}
+\newcommand{\dev}[1]{{\frac{\text{d}}{\dif{#1}}\;\!}}
+\newcommand{\ve}[1]{{\bm{#1}}}
+\newcommand{\mat}[1]{\ve{#1}}
+\newcommand{\ven}[2]{{\left\langle#1,#2\right\rangle}}
+\newcommand{\veN}[3]{{\left\langle#1,#2,#3\right\rangle}}
+\newcommand{\ang}[2]{{(\widehat{\ve{#1},\ve{#2}})}}
+\newcommand{\abs}[1]{{\left|{#1}\right|}}
+\newcommand{\when}[2]{{\left.{#1}\right|_{#2}}}
+\newcommand{\dist}[2]{{\left\|\ve{#1}-\ve{#2}\right\|}}
+\newcommand{\norm}[1]{{\left\|#1\right\|}}
+\newcommand{\emplin}{\vspace{1em}}
+
+\begin{document}
+
+\section*{线性方程组}
+\subsection*{消元法}
+对于线性方程组
+\[\left\{
+\begin{aligned}
+a_{11}x_1+a_{12}x_2+\cdots+a_{1n}x_n&=b_1\\
+a_{21}x_1+a_{22}x_2+\cdots+a_{2n}x_n&=b_2\\
+\cdots\cdots\cdots\cdots\cdots\cdots\cdots\cdots\cdots&\cdots\cdots\\
+a_{m1}x_1+a_{m2}x_2+\cdots+a_{mn}x_n&=b_m
+\end{aligned}
+\right.\]
+其矩阵形式为
+\[\mat{A}\mat{x}=\mat{b}\]
+其中
+\[\displaystyle\mat{A}=\begin{bmatrix}
+a_{11}&a_{12}&\cdots&a_{1n}\\
+a_{21}&a_{22}&\cdots&a_{2n}\\
+\vdots&\vdots&\ddots&\vdots\\
+a_{m1}&a_{m2}&\cdots&a_{mn}
+\end{bmatrix},\quad
+\displaystyle\mat{x}=\begin{bmatrix}
+x_1\\
+x_2\\
+\vdots\\
+x_n
+\end{bmatrix},\quad
+\displaystyle\mat{b}=\begin{bmatrix}
+b_1\\
+b_2\\
+\vdots\\
+b_m
+\end{bmatrix}\]
+称矩阵$\displaystyle\begin{bmatrix}\mat{A}&\mat{b}\end{bmatrix}$（有时记为$\widetilde{\mat{A}}$）为线性方程组的\textbf{增广矩阵}
+
+当$b_i=0$时，线性方程组称为齐次的，否则称为非齐次的；显然，齐次线性方程组的矩阵形式为
+\[\mat{A}\mat{x}=\mat{0}\]
+
+\emplin
+\emplin
+
+设$\mat{A}=(a_{ij})_{m\times n}$，$n$元齐次线性方程组$\mat{A}\mat{x}=\mat{0}$有非零解的充要条件是系数矩阵$\mat{A}$的秩$r(\mat{A})<n$
+
+\emplin
+
+设$\mat{A}=(a_{ij})_{m\times n}$，$n$元非齐次线性方程组$\mat{A}\mat{x}=\mat{b}$有解的充要条件是系数矩阵$\mat{A}$的秩等于增广矩阵
+$\widetilde{\mat{A}}=\begin{bmatrix}\mat{A}&\mat{b}\end{bmatrix}$的秩，即$r(\mat{A})=r(\widetilde{\mat{A}})$
+
+\emplin
+
+\begin{center}
+  \begin{tabular}{cc|cc}
+    &$\mat{A}\mat{x}=\mat{b}$&$\mat{A}\mat{x}=\mat{0}$&\\
+    \hline
+    $r(\mat{A})=r(\widetilde{\mat{A}})=n$&有唯一解&唯一$0$解&$r(\mat{A})=n$\\
+    $r(\mat{A})=r(\widetilde{\mat{A}})<n$&欠定方程组（无穷多解）&有非$0$解&$r(\mat{A})<n$\\
+    $r(\mat{A})\ne r(\widetilde{\mat{A}})$&矛盾方程组（无解）
+  \end{tabular}
+\end{center}
+
+有非齐次线性方程组，将增广矩阵$\widetilde{\mat{A}}$化为行阶梯形矩阵，便可直接判断其是否有解，若有解，化为行最简形矩阵，便可直接写出其全部解；
+其中要注意，当$r(\mat{A})=r(\widetilde{\mat{A}})<n$时，$\widetilde{\mat{A}}$的行阶梯形矩阵中含有$s$个非零行，
+把这$s$行的第一个非零元所对应的未知量作为非自由量，其余$n-s$个作为自由未知量
+
+\section*{向量组的线性组合}
+\subsection*{$n$维向量及其线性运算}
+$n$个有次序的数$a_1,a_2,\cdots,a_n$所组成的数组称为$n$维向量，这$n$个数称为该向量的$n$个分量，第$i$个数$a_i$称为第$i$个分量
+
+分量全为实数的向量称为实向量，分量为复数的向量称为复向量
+
+$n$为向量可写成一行，也可写成一列；分别称为行向量与列向量，也就是行矩阵与列矩阵，并规定行向量与列向量都按矩阵的运算法则进行计算；因此，
+$n$维列向量$\displaystyle\mat{\alpha}=\begin{bmatrix}a_1\\a_2\\\vdots\\a_n\end{bmatrix}$与
+$n$维行向量$\displaystyle\mat{\alpha}^T=\begin{bmatrix}a_1&a_2&\cdots&a_n\end{bmatrix}$总被视为是两个不同的向量
+
+通常用黑体小写字母$\mat{\alpha}$，$\mat{\beta}$，$\mat{a}$，$\mat{b}$等表示列向量，用$\mat{\alpha}^T$，$\mat{\beta}^T$，$\mat{a}^T$，$\mat{b}^T$等
+表示行向量，所讨论的向量在没有特别指明的情况下都被视为列向量
+
+“空间”通常作为点的集合，称为点空间；$n$维向量的全体所组成的集合$\mat{R}^n=\{ \mat{x}=(x_1,x_2,\cdots,x_n)^T|x_1,x_2,\cdots,x_n\in\mathbb{R} \}$
+称为$n$维向量空间
+
+\emplin
+
+若干个同维数的列向量（或行向量）所组成的集合称为\textbf{向量组}
+一个$m\times n$矩阵$\displaystyle\mat{A}
+\begin{bmatrix}
+a_{11}&a_{12}&\cdots&a_{1n}\\
+a_{21}&a_{22}&\cdots&a_{2n}\\
+\vdots&\vdots&\ddots&\vdots\\
+a_{m1}&a_{m2}&\cdots&a_{mn}
+\end{bmatrix}$的每一列
+\[\mat{\alpha}_j=
+\begin{bmatrix}
+  a_{1j}\\
+  a_{2j}\\
+  \vdots\\
+  a_{mj}
+\end{bmatrix}\]组成的向量组$\mat{\alpha}_1,\quad\mat{\alpha}_2,\quad\cdots,\quad\mat{\alpha}_n$称为矩阵$\mat{A}$的列向量组，
+而由矩阵$\mat{A}$的每一行
+\[\mat{\beta}_i=
+\begin{bmatrix}
+  a_{i1},&a_{i2},&\cdots,&a_{in}
+\end{bmatrix}\]组成的向量组$\mat{\beta}_1,\quad\mat{\beta}_2,\quad\cdots,\quad\mat{\beta}_m$称为矩阵$\mat{A}$的行向量组
+
+因而矩阵$\mat{A}$可记为
+\[\mat{A}=\begin{bmatrix}
+  \mat{\alpha}_1&\mat{\alpha}_2&\cdots&\mat{\alpha}_n
+\end{bmatrix}=\begin{bmatrix}
+  \mat{\beta}_1\\\mat{\beta}_2\\\cdots\\\mat{\beta}_m
+\end{bmatrix}\]
+
+\emplin
+
+矩阵的列向量组和行向量组都是只含有限个向量的向量组，而线性方程组
+\[\mat{A}\mat{x}=\mat{0}\]
+的全部解（$\mat{x}$）当$r(\mat{A})<n$时是一个含有无限多个$n$维列向量的向量组
+
+\emplin
+
+两个$n$维向量$\mat{\alpha}=\begin{bmatrix}a_1&a_2&\cdots&a_n\end{bmatrix}^T$与$\mat{\beta}=\begin{bmatrix}b_1&b_2&\cdots&b_n\end{bmatrix}^T$
+的各对应分量之和组成的向量，称为向量$\alpha$与$\beta$的和，记为$\mat{\alpha}+\mat{\beta}$，即
+\[\mat{\alpha}+\mat{\beta}=\begin{bmatrix}a_1+b_1&a_2+b_2&\cdots&a_n+b_n\end{bmatrix}^T\]
+
+向量的减法
+\[\mat{\alpha}-\mat{\beta}=\mat{\alpha}+(-\mat{\beta})=\begin{bmatrix}a_1-b_1&a_2-b_2&\cdots&a_n-b_n\end{bmatrix}^T\]
+
+\emplin
+
+$n$维向量$\mat{\alpha}=\begin{bmatrix}a_1&a_2&\cdots&a_n\end{bmatrix}^T$的各个分量都乘以实数$k$所组成的向量，称为数$k$与向量$\mat{\alpha}$的乘积
+（又简称为数乘）,记为$k\mat{\alpha}$，即\[\mat{k\alpha}=\begin{bmatrix}ka_1&ka_2&\cdots&ka_n\end{bmatrix}^T\]
+向量的加法和数乘运算统称为向量的线性运算
+
+\emplin
+
+向量的线性运算与行（列）矩阵的运算规则相同
+\begin{itemize}
+  \item $\mat{\alpha}+\mat{\beta}=\mat{\beta}+\mat{\alpha}$
+  \item $(\mat{\alpha}+\mat{\beta})+\mat{\gamma}=\mat{\alpha}+(\mat{\beta}+\mat{\gamma})$
+  \item $\mat{\alpha}+\mat{0}=\mat{\alpha}$
+  \item $\mat{\alpha}+(-\mat{\alpha})=\mat{0}$
+  \item $1\mat{\alpha}=\mat{\alpha}$
+  \item $k(l\mat{\alpha})=(kl)\mat{\alpha}$
+  \item $k(\mat{\alpha}+\mat{\beta})=k\mat{\alpha}+k\mat{\beta}$
+  \item $(k+l)\mat{\alpha}=k\mat{\alpha}+l\mat{\alpha}$
+\end{itemize}
+
+\emplin
+
+给定向量组$\mat{A}:\mat{\alpha}_1,\mat{\alpha}_2,\cdots,\mat{\alpha}_s$，对于任一组实数$k_1,k_2,\cdots,k_s$，表达式
+$k_1\mat{\alpha}_1+k_2\mat{\alpha}_2+\cdots+k_s\mat{\alpha}_s$称为向量组$\mat{A}$的一个线性组合，$k_1,k_2,\cdots,k_s$称为这个线性组合的系数，
+也成为该线性组合的权重
+
+
+
+
+\end{document}
