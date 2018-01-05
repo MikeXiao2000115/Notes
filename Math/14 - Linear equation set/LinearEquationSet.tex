@@ -184,6 +184,119 @@ $n$维向量$\mat{\alpha}=\begin{bmatrix}a_1&a_2&\cdots&a_n\end{bmatrix}^T$的�
 $k_1\mat{\alpha}_1+k_2\mat{\alpha}_2+\cdots+k_s\mat{\alpha}_s$称为向量组$\mat{A}$的一个线性组合，$k_1,k_2,\cdots,k_s$称为这个线性组合的系数，
 也成为该线性组合的权重
 
+\emplin
+
+给定向量组$\mat{A}:\mat{\alpha}_1,\mat{\alpha}_2,\cdots,\mat{\alpha}_s$和向量$\mat{\beta}$，若存在一组数$k_1,k_2,\cdots,k_s$，使
+\[\mat{\beta}=k_1\mat{\alpha}_1+k_2\mat{\alpha}_2+\cdots+k_s\mat{\alpha}_s\]
+则称向量$\mat{\beta}$是向量组$\mat{A}$的线性组合，又称向量$\mat{\beta}$能由向量组$\mat{A}$线性表示
+
+\emplin
+
+设向量$\mat{\beta}$，$\mat{\alpha}_j$，则向量$\mat{\beta}$能由向量组$\mat{\alpha}_1,\mat{\alpha}_2,\cdots,\mat{\alpha}_s$线性表示的充分必要条件是
+矩阵$\mat{A}=\begin{bmatrix}
+  \mat{\alpha}_1&\mat{\alpha}_2&\cdots&\mat{\alpha}_n
+\end{bmatrix}$与其增广矩阵$\widetilde{\mat{A}}=\begin{bmatrix}
+  \mat{\alpha}_1&\mat{\alpha}_2&\cdots&\mat{\alpha}_n&\mat{\beta}
+\end{bmatrix}$的秩相同，即
+\[r(\mat{A})=r(\widetilde{\mat{A}})\]
+
+\subsection*{向量组间的线性表示}
+设有两向量组
+\[\mat{A}:\mat{\alpha}_1,\mat{\alpha}_2,\cdots,\mat{\alpha}_s;\mat{B}:\mat{\beta}_1,\mat{\beta}_2,\cdots,\mat{\beta}_t\]
+若向量组$\mat{B}$中的每一个向量都能由向量组$\mat{A}$线性表示，则称向量组$\mat{B}$能由向量组$\mat{A}$线性表示；若向量组$\mat{A}$
+与向量组$\mat{B}$能相互线性表示，则称这两个向量组\textbf{等价}
+
+即存在$\mat{K}_{s\times t}=(k_{ij})_{s\times t}$使得
+\[(\mat{\beta}_1,\mat{\beta}_2,\cdots,\mat{\beta}_t)=(\mat{\alpha}_1,\mat{\alpha}_2,\cdots,\mat{\alpha}_s)
+\begin{bmatrix}
+  k_{11}&k_{12}&\cdots&k_{1t}\\
+  k_{21}&k_{22}&\cdots&k_{2t}\\
+  \vdots&\vdots&\ddots&\vdots\\
+  k_{s1}&k_{s2}&\cdots&k_{st}
+\end{bmatrix}\]
+其中矩阵$\mat{K}$称为这一线性表示的\textbf{系数矩阵}
+
+\emplin
+
+若$\mat{C}_{s\times n}=\mat{A}_{s\times t}\mat{B}_{t\times n}$，则矩阵$\mat{C}$的\emph{列向量组}能由矩阵$\mat{A}$的\emph{列向量组}线性表示，
+$\mat{B}$为这一表示的系数矩阵；而$\mat{C}$的\emph{行向量组}能由矩阵$\mat{B}$的\emph{行向量组}线性表示，$\mat{A}$为这一表示的系数矩阵
+
+\emplin
+
+若向量组$\mat{A}$可由向量组$\mat{B}$线性表示，向量组$\mat{B}$可由向量组$\mat{C}$线性表示，则向量组$\mat{A}$可由向量组$\mat{C}$线性表示
+
+\section*{向量组的线性相关性}
+\subsection*{概念}
+给定向量组$\mat{A}:\mat{\alpha}_1,\mat{\alpha}_2,\cdots,\mat{\alpha}_s$如果存在不全为零的数$k_1,k_2,\cdots,k_s$使
+\[k_1\mat{\alpha}_1+k_2\mat{\alpha}_2+\cdots+k_s\mat{\alpha}_s=\mat{0}\]
+则称向量组$\mat{A}$\textbf{线性相关}，否则称为\textbf{线性无关}
+
+由上述可见
+\begin{enumerate}
+  \item 向量组只含有一个向量$\mat{\alpha}$时，$\mat{\alpha}$线性无关的充分必要条件是$\mat{\alpha}\ne\mat{0}$；
+  因此，单个零向量是线性相关的，且任一包含零向量的向量组都是线性相关的
+  \item 仅包含两个向量的向量组线性相关的充分必要条件是这两个向量的对应成分成比例
+  \item 三个向量线性相关的集合意义是它们共面
+\end{enumerate}
+
+\textbf{如果当且仅当$k_1=k_2=\cdots=k_s=0$时，$k_1\mat{\alpha}_1+k_2\mat{\alpha}_2+\cdots+k_s\mat{\alpha}_s=\mat{0}$成立，
+则向量组$\mat{\alpha}_1,\mat{\alpha}_2,\cdots,\mat{\alpha}_s$是线性无关的}，这是论证一向量组线性无关的基本方法
+
+\subsection*{线性相关性的判定}
+向量组$\mat{\alpha}_1,\mat{\alpha}_2,\cdots,\mat{\alpha}_s\quad(s\ge2)$线性相关的充要条件是向量组中至少有一个向量可由其余$s-1$个向量线性表示
+
+设有列向量组$\mat{\alpha}_1,\mat{\alpha}_2,\cdots,\mat{\alpha}_s$，及由该向量组构成的矩阵$\mat{A}=\begin{bmatrix}\mat{\alpha}_1&\mat{\alpha}_2&\cdots&\mat{\alpha}_s\end{bmatrix}$，
+则向量组$\mat{\alpha}_1,\mat{\alpha}_2,\cdots,\mat{\alpha}_s$线性相关，就是齐次线性方程组
+\[x_1\mat{\alpha}_1+x_2\mat{\alpha}_2+\cdots+x_s\mat{\alpha}_s=0\quad(\mat{A}\mat{x}=\mat{0})\]
+有非零解的充要条件是系数矩阵
+
+\emplin
+\emplin
+\emplin
+
+\textbf{设有列向量组$\mat{\alpha}_j=\begin{bmatrix}a_{1j}\\a_{2j}\\\vdots\\a_{nj}\end{bmatrix}$则向量组$\mat{\alpha}_1,\mat{\alpha}_2,\cdots,\mat{\alpha}_s$
+线性相关的充要条件是：矩阵$\mat{A}=\begin{bmatrix}\mat{\alpha}_1&\mat{\alpha}_2&\cdots&\mat{\alpha}_s\end{bmatrix}$的秩小于向量的个数$s$}
+
+$s$个$n$维列向量$\mat{\alpha}_1,\mat{\alpha}_2,\cdots,\mat{\alpha}_s$线性无关（线性相关）的充要条件是：矩阵$\mat{A}=\begin{bmatrix}\mat{\alpha}_1&\mat{\alpha}_2&\cdots&\mat{\alpha}_s\end{bmatrix}$
+的秩等于（小于）向量的个数$s$
+
+$n$个$n$维列向量$\mat{\alpha}_1,\mat{\alpha}_2,\cdots,\mat{\alpha}_s$线性无关（线性相关）的充要条件是：矩阵$\mat{A}=\begin{bmatrix}\mat{\alpha}_1&\mat{\alpha}_2&\cdots&\mat{\alpha}_s\end{bmatrix}$
+的行列式不等于（等于）零
+
+\textbf{当向量组中所含向量的个数大于向量的维数是，此向量组必定线性相关}
+
+\emplin
+\emplin
+
+\textbf{若向量组中有一部分向量（部分组）线性相关，则整个向量组线性相关}
+
+线性无关的向量组中的任一部分组皆线性无关
+
+\emplin
+\emplin
+
+\textbf{若向量组$\mat{\alpha}_1,\mat{\alpha}_2,\cdots,\mat{\alpha}_s,\mat{\beta}$线性相关，而向量组$\mat{\alpha}_1,\mat{\alpha}_2,\cdots,\mat{\alpha}_s$线性无关，
+则向量$\mat{\beta}$可由$\mat{\alpha}_1,\mat{\alpha}_2,\cdots,\mat{\alpha}_s$线性表示，且表示法唯一}
+
+\emplin
+\emplin
+
+\textbf{设有两向量组
+\[\mat{A}:\mat{\alpha}_1,\mat{\alpha}_2,\cdots,\mat{\alpha}_s;\quad\mat{B}:\mat{\beta}_1,\mat{\beta}_2,\cdots,\mat{\beta}_t\]
+向量组$\mat{B}$能由向量组$\mat{A}$线性表示，若$s<t$，则向量组$\mat{B}$线性相关}
+
+设向量组$\mat{B}$能由向量组$\mat{A}$线性表示，若向量组$\mat{B}$线性无关，则$s\ge t$
+
+设向量组$\mat{A}$与$\mat{B}$可以相互线性表示，若$\mat{A}$与$\mat{B}$都是线性无关的，则$s=t$
+
+\section*{向量组的秩}
+\subsection*{极大线性无关向量组}
+
+
+
+
+
+
 
 
 
