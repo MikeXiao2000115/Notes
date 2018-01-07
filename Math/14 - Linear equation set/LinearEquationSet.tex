@@ -1,3 +1,4 @@
+
 \documentclass[UTF8]{ctexart}
 
 \usepackage{geometry}
@@ -23,6 +24,7 @@
 \newcommand{\dev}[1]{{\frac{\text{d}}{\dif{#1}}\;\!}}
 \newcommand{\ve}[1]{{\bm{#1}}}
 \newcommand{\mat}[1]{\ve{#1}}
+\newcommand{\set}[1]{{\mathbb{#1}}}
 \newcommand{\ven}[2]{{\left\langle#1,#2\right\rangle}}
 \newcommand{\veN}[3]{{\left\langle#1,#2,#3\right\rangle}}
 \newcommand{\ang}[2]{{(\widehat{\ve{#1},\ve{#2}})}}
@@ -291,13 +293,133 @@ $n$个$n$维列向量$\mat{\alpha}_1,\mat{\alpha}_2,\cdots,\mat{\alpha}_s$线性
 
 \section*{向量组的秩}
 \subsection*{极大线性无关向量组}
+设有向量组$\mat{A}:\mat{\alpha}_1,\mat{\alpha}_2,\cdots,\mat{\alpha}_s$，
+若在向量组$\mat{A}$中能选出$r$个向量$\mat{\alpha}_{j_1},\mat{\alpha}_{j_2},\cdots,\mat{\alpha}_{j_r}$，满足
+\begin{enumerate}
+  \item 向量组$\mat{A}_0:\mat{\alpha}_{j_1},\mat{\alpha}_{j_2},\cdots,\mat{\alpha}_{j_r}$线性无关
+  \item 向量组$\mat{A}$中任意$r+1$个向量（若有的话）均线性相关
+\end{enumerate}
+则称向量组$\mat{A}_0$是向量组$\mat{A}$的一个\textbf{极大线性无关向量组}
 
+\emplin
+\emplin
 
+如果$\mat{\alpha}_{j_1},\mat{\alpha}_{j_2},\cdots,\mat{\alpha}_{j_r}$是$\mat{\alpha}_1,\mat{\alpha}_2,\cdots,\mat{\alpha}_s$的线性无关部分组，
+它是极大线性无关组的充分必要条件是$\mat{\alpha}_1,\mat{\alpha}_2,\cdots,\mat{\alpha}_s$中的每个向量都可由$\mat{\alpha}_{j_1},\mat{\alpha}_{j_2},\cdots,\mat{\alpha}_{j_r}$
+线性表示
 
+\subsection*{向量组的秩}
+向量组$\mat{\alpha}_1,\mat{\alpha}_2,\cdots,\mat{\alpha}_s$的极大无关组所含向量的个数称为该向量组的秩，记为
+\[r(\mat{\alpha}_1,\mat{\alpha}_2,\cdots,\mat{\alpha}_s)\]
+\textbf{规定由零向量组成的向量组的秩为$0$}
 
+\subsection*{矩阵与向量组秩的关系}
+\textbf{设$\mat{A}$为$m\times n$矩阵，则矩阵$\mat{A}$的秩等于它的列向量组的秩，也等于它的行向量组的秩}
 
+矩阵$\mat{A}$的行向量组的秩与其列向量组的秩相等
 
+若$D_s$是矩阵$\mat{A}$的一个最高阶非零子式，则$D_s$所在的$s$列就是$\mat{A}$的列向量组的一个极大无关组；$D_s$所在的$s$行即是$\mat{A}$的行向量组的一个极大无关组
 
+\textbf{若对矩阵$\mat{A}$施以初等行变换得到矩阵$\mat{B}$，则矩阵$\mat{B}$的列向量组与$\mat{A}的列向量组由相同的线性关系$}
+
+\emplin
+\emplin
+
+\textbf{若向量组$\mat{B}$能由向量组$\mat{A}$表示，则$r(\mat{B})\le r(\mat{A})$}
+
+等价的向量组的秩相等
+
+设向量组$\mat{B}$是向量组$\mat{A}$的部分组，若向量组$\mat{B}$线性无关，且向量组$\mat{A}$能由向量组$\mat{B}$线性表示，
+则向量组$\mat{B}$是向量组$\mat{A}$的一个极大线性无关组
+
+\section*{向量空间}
+设$\set{V}$为$n$维向量的集合，若集合$\set{V}$非空，且集合$\set{V}$对$n$维向量的加法及数乘两种运算封闭，即
+\begin{itemize}
+  \item 若$\mat{\alpha}\in\set{V}$，$\mat{\beta}\in\set{V}$，则$\mat{\alpha}+\mat{\beta}\in\set{V}$
+  \item 若$\mat{\alpha}\in\set{V}$，$\lambda\in\set{R}$，则$\lambda\mat{\alpha}\in\set{V}$
+\end{itemize}
+则称集合$\set{V}$为$\set{R}$上的向量空间
+
+\textbf{记所有$n$为向量的集合为$\set{R}^n$，而集合$\set{R}^n$构成一向量空间，称$\set{R}^n$为$n$为向量空间}
+
+\emplin
+
+由向量组$\mat{\alpha}_1,\mat{\alpha}_2,\cdots,\mat{\alpha}_m$所生成的向量空间记为
+\[\set{V}=\{ \mat{\xi}=\lambda_1\mat{\alpha}_1+\lambda_2\mat{\alpha}_2+\cdots+\lambda_m\mat{\alpha}_m|\lambda_1,\lambda_2,\cdots,\lambda_m\in\set{R} \}\]
+
+\emplin
+
+集合$\set{S}=\{ \mat{\alpha}|\mat{A}\mat{\alpha}=\mat{0} \}$是一向量空间，称其为齐次线性方程组$\mat{A}\mat{x}=\mat{0}$的\textbf{解空间}
+
+\emplin
+\emplin
+
+设由向量空间$\set{V}_1$与$\set{V}_2$，若向量空间$\set{V}_1\subset\set{V}_2$，则称$\set{V}_1$是$\set{V}_2$的子空间
+
+\subsection*{向量空间的基与维数}
+设$\set{V}$是向量空间，若有$r$个向量$\mat{\alpha}_1,\mat{\alpha}_2,\cdots,\mat{\alpha}_r\in\set{V}$，且满足
+\begin{itemize}
+  \item $\mat{\alpha}_1,\mat{\alpha}_2,\cdots,\mat{\alpha}_r$线性无关
+  \item $\set{V}$中任一向量都可有$\mat{\alpha}_1,\mat{\alpha}_2,\cdots,\mat{\alpha}_r$线性表示
+\end{itemize}
+则称向量组$\mat{\alpha}_1,\mat{\alpha}_2,\cdots,\mat{\alpha}_r$为向量空间$\set{V}$的一个基，数$r$称为向量空间$\set{V}$的维数，记为
+$\text{dim}\set{V}=r$，并称$\set{V}$为$r$维向量空间
+
+\begin{enumerate}
+  \item 只含零向量的向量空间称为\textbf{$0$维向量空间}，它没有基
+  \item 若把向量空间$\set{V}$看作向量组，则$\set{V}$的基就是向量组的极大无关组，$\set{V}$的维数就是向量组的秩
+  \item 若向量组$\mat{\alpha}_1,\mat{\alpha}_2,\cdots,\mat{\alpha}_r$为向量空间$\set{V}$的一个基，则$\set{V}$可表示为
+  \[\set{V}=\{ \mat{x}|\mat{x}=\lambda_1\mat{\alpha}_1+\lambda_2\mat{\alpha}_2+\cdots+\lambda_r\mat{\alpha}_r|\lambda_1,\lambda_2,\cdots,\lambda_r\in\set{R} \}\]
+  此时，$\set{V}$又称为\textbf{由基$\mat{\alpha}_1,\mat{\alpha}_2,\cdots,\mat{\alpha}_r$所生成的向量空间}
+\end{enumerate}
+
+\emplin
+\emplin
+
+\textbf{如果在向量空间$\set{V}$中取定一个基$\mat{\alpha}_1,\mat{\alpha}_2,\cdots,\mat{\alpha}_r$，那么$\set{V}$中任一向量$\mat{x}$可唯一地表示为
+\[\mat{x}=\lambda_1\mat{\alpha}_1+\lambda_2\mat{\alpha}_2+\cdots+\lambda_r\mat{\alpha}_r\]
+有序数组$\lambda_1,\lambda_2,\cdots,\lambda_r$称为向量$\mat{x}$在基$\mat{\alpha}_1,\mat{\alpha}_2,\cdots,\mat{\alpha}_r$下的坐标}
+
+特别地，在$n$维向量空间$\set{R}^n$中取单位坐标向量组$\mat{\epsilon}_1,\mat{\epsilon}_2,\cdots,\mat{\epsilon}_n$为基，则以
+$x_1,x_2,\cdots,x_n$为分量的向量$\mat{x}$可表示为
+\[\mat{x}=x_1\mat{\epsilon}_1+x_2\mat{\epsilon}_2+\cdots+x_n\mat{\epsilon}_n\]
+可见向量在基$\mat{\epsilon}_1,\mat{\epsilon}_2,\cdots,\mat{\epsilon}_n$下的坐标就是该向量的分量；
+$\mat{\epsilon}_1,\mat{\epsilon}_2,\cdots,\mat{\epsilon}_n$称为$\set{R}^n$中的\textbf{自然基}
+
+一个集合的坐标系就是这个集合中的点到$\set{R}^n$的一个一对一映射
+
+\section*{线性方程组解的结构}
+\subsection*{齐次线性方程组解的结构}
+对于矩阵方程$\mat{A}\mat{x}=\mat{0}$，称向量$\mat{x}$为其\textbf{解向量}
+
+\emplin
+
+其具有性质
+\begin{enumerate}
+  \item 若$\mat{\xi}_1$，$\mat{\xi}_2$为矩阵方程的解向量，则$\mat{\xi}_1+\mat{\xi}_2$也是其解向量
+  \item 若$\mat{\xi}_1$是矩阵方程的解向量，$k$为实数，则$k\mat{\xi}_1$也是其解向量
+  \item 若$\mat{\xi}_1,\mat{\xi}_2,\cdots,\mat{\xi}_s$是矩阵方程的解向量，则由它们为基构成的向量空间$\set{S}$中的任一向量均为其解，
+  称此向量空间为$\mat{A}\mat{x}=\mat{0}$的\textbf{解空间}
+\end{enumerate}
+
+\emplin
+\emplin
+
+若齐次线性方程组$\mat{A}\mat{x}=\mat{0}$的有限个解$\mat{\eta}_1,\mat{\eta}_2,\cdots,\mat{\eta}_t$满足
+\begin{itemize}
+  \item $\mat{\eta}_1,\mat{\eta}_2,\cdots,\mat{\eta}_t$线性无关
+  \item $\mat{A}\mat{x}=\mat{0}$的任一解均可由$\mat{\eta}_1,\mat{\eta}_2,\cdots,\mat{\eta}_t$线性表示
+\end{itemize}
+则称$\mat{\eta}_1,\mat{\eta}_2,\cdots,\mat{\eta}_t$是齐次线性方程组$\mat{A}\mat{x}=\mat{0}$的一个\textbf{基础解系}
+
+\emplin
+\emplin
+
+对于基础解系$\mat{\eta}_1,\mat{\eta}_2,\cdots,\mat{\eta}_t$，$\mat{A}\mat{x}=\mat{0}$的全部解可表示为
+\[c_1\mat{\eta}_1+c_2\mat{\eta}_2+\cdots+c_t\mat{\eta}_t\quad c_1,c_2,\cdots,c_t\in\set{R}\]
+该表达式称为线性方程组$\mat{A}\mat{x}=\mat{0}$的\textbf{通解}
+
+\subsection*{非齐次线性方程组解的结构}
 
 
 \end{document}
