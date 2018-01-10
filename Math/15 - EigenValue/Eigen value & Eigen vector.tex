@@ -1,0 +1,430 @@
+
+\documentclass[UTF8]{ctexart}
+
+\usepackage{geometry}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{esint}
+\usepackage{yhmath}
+\usepackage{bm}
+
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+
+\special{papersize={18.1cm,25.7cm}}
+\geometry{left=1.5cm,right=0.5cm,top=2cm,bottom=1cm}
+\pagestyle{empty}
+
+\setcounter{MaxMatrixCols}{20}
+
+\newcommand{\D}{{\text{d}\;\!}}
+\newcommand{\cross}{\times}
+\newcommand{\dotprod}[2]{\left[{#1},\;{#2}\right]}
+\newcommand{\dif}[1]{{\mathrm{d}\;\!#1}}
+\newcommand{\dev}[1]{{\frac{\text{d}}{\dif{#1}}\;\!}}
+\newcommand{\ve}[1]{{\bm{#1}}}
+\newcommand{\mat}[1]{\ve{#1}}
+\newcommand{\set}[1]{{\mathbb{#1}}}
+\newcommand{\ven}[2]{{\left\langle#1,#2\right\rangle}}
+\newcommand{\veN}[3]{{\left\langle#1,#2,#3\right\rangle}}
+\newcommand{\ang}[2]{{(\widehat{\ve{#1},\ve{#2}})}}
+\newcommand{\abs}[1]{{\left|{#1}\right|}}
+\newcommand{\when}[2]{{\left.{#1}\right|_{#2}}}
+\newcommand{\dist}[2]{{\left\|\ve{#1}-\ve{#2}\right\|}}
+\newcommand{\norm}[1]{{\left\|#1\right\|}}
+\newcommand{\emplin}{\vspace{1em}}
+
+\begin{document}
+
+\section*{向量内积}
+\subsection*{定义}
+设有$n$维向量
+\[\mat{x}=\begin{bmatrix}
+x_1\\
+x_2\\
+\vdots\\
+x_n
+\end{bmatrix},\quad
+\mat{y}=\begin{bmatrix}
+y_1\\
+y_2\\
+\vdots\\
+y_n
+\end{bmatrix}\]
+令$\dotprod{\mat{x}}{\mat{y}}=\sum_{i=1}^nx_iy_i$，称为$\dotprod{\mat{x}}{\mat{y}}$为向量$\mat{x}$与$\mat{y}$的\textbf{内积}，用矩阵的记法可表示为
+\[\dotprod{\mat{x}}{\mat{y}}=\mat{x}^T\mat{y}=\begin{bmatrix}
+x_1&x_2&\cdots&x_n
+\end{bmatrix}\begin{bmatrix}
+y_1\\
+y_2\\
+\vdots\\
+y_n
+\end{bmatrix}\]
+其具有性质
+\begin{itemize}
+  \item $\dotprod{\mat{x}}{\mat{y}}=\dotprod{\mat{y}}{\mat{x}}$
+  \item $\dotprod{\lambda\mat{x}}{\mat{y}}=\lambda\dotprod{\mat{x}}{\mat{y}}$
+  \item $\dotprod{\mat{x}+\mat{y}}{\mat{z}}=\dotprod{\mat{x}}{\mat{z}}+\dotprod{\mat{y}}{\mat{z}}$
+  \item $\dotprod{\mat{x}}{\mat{x}}\ge0$，当且仅当$\mat{x}=\mat{0}$时，$\dotprod{x}{x}=0$
+\end{itemize}
+\subsection*{向量的长度与性质}
+令
+\[\norm{\mat{x}}=\sqrt{\dotprod{\mat{x}}{\mat{x}}}=\sqrt{x_1^2+x_2^2+\cdots+x_n^2}\]
+称$\norm{x}$为$n$维向量$\mat{x}$的长度（或\textbf{范数}）
+
+向量的长度具有如下性质
+\begin{itemize}
+  \item 非负性$\norm{\mat{x}}\ge0$，当且仅当$\mat{x}=\mat{0}$时，$\norm{\mat{x}}=0$
+  \item 齐次性$\norm{\lambda\mat{x}}=\abs{\lambda}\norm{\mat{x}}$
+  \item 三角不等式$\norm{\mat{x}+\mat{y}}\le\norm{\mat{x}}+\norm{\mat{y}}$
+  \item 对任意$n$维向量$\mat{x}$，$\mat{y}$，有$\abs{\dotprod{\mat{x}}{\mat{y}}}\le\norm{\mat{x}}\cdot\norm{\mat{y}}$
+  \item 若令$\mat{x}=\begin{bmatrix}x_1&x_2&\cdots&x_n\end{bmatrix},\quad\mat{y}=\begin{bmatrix}y_1&y_2&\cdots&y_n\end{bmatrix}$，则有
+  \[\abs{\sum_{i=1}^nx_iy_i}\le\sqrt{\sum_{i=1}^nx_i^2}\cdot\sqrt{\sum_{i=1}^ny_i^2}\]
+  称为\textbf{柯西-布涅柯夫斯基不等式}
+\end{itemize}
+
+\emplin
+\emplin
+\emplin
+
+当$\norm{\mat{x}}=1$时，称$\mat{x}$为\textbf{单位向量}
+
+对$\set{R}^n$中的任一非零向量$\mat{\alpha}$，向量$\frac{\mat{\alpha}}{\norm{\mat{\alpha}}}$是一个单位向量（这个过程又称为\textbf{$\mat{\alpha}$的单位化}）
+
+当$\norm{\mat{\alpha}}\ne0$，$\norm{\mat{\beta}}\ne0$时，定义
+\[\theta=\arccos\frac{\dotprod{\mat{\alpha}}{\mat{\beta}}}{\norm{\mat{\alpha}}\cdot\norm{\mat{\beta}}}\quad(0\le\theta\le\pi)\]
+称$\theta$为\textbf{$n$维向量$\mat{\alpha}$与$\mat{\beta}$的夹角}
+
+\subsection*{正交向量组}
+若两向量$\mat{\alpha}$与$\mat{\beta}$的内积为零，即
+\[\dotprod{\mat{\alpha}}{\mat{\beta}}=0\]
+则称\textbf{向量$\mat{\alpha}$与向量$\mat{\beta}$相互正交}，记作$\mat{\alpha}\perp\mat{\beta}$
+
+显然，$\mat{0}$与任一向量都正交
+
+\begin{itemize}
+  \item $\norm{\mat{\alpha}-\mat{\beta}}=\norm{\mat{\beta}-(-\mat{\alpha})}\iff\mat{\alpha}\perp\mat{\beta}$
+  \item $\norm{\mat{\alpha}+\mat{\beta}}^2=\norm{\mat{\alpha}}^2+\norm{\mat{\beta}}^2\iff\mat{\alpha}\perp\mat{\beta}$
+\end{itemize}
+
+\emplin
+\emplin
+\emplin
+
+若$n$维向量$\mat{\alpha}_1,\mat{\alpha}_2,\cdots,\mat{\alpha}_r$是一个非零向量组，且$\mat{\alpha}_1,\mat{\alpha}_2,\cdots,\mat{\alpha}_r$
+中的向量两两正交，则称该向量组为\textbf{正交向量组}
+
+若$n$为向量$\mat{\alpha}_1,\mat{\alpha}_2,\cdots,\mat{\alpha}_r$是一个正交向量组，则$\mat{\alpha}_1,\mat{\alpha}_2,\cdots,\mat{\alpha}_r$
+线性无关
+
+\emplin
+\emplin
+
+$\set{R}^n$中任一正交向量组的向量个数不会超过$n$，若向量组$\mat{\alpha}_1,\mat{\alpha}_2,\cdots,\mat{\alpha}_r$是正交向量组，
+且其中向量均为\emph{单位向量}，则称该向量组为\textbf{规范正交向量组}
+
+\subsection*{规范正交基及其求法}
+设$\set{V}\subset\set{R}^n$是一个向量空间
+\begin{enumerate}
+  \item 若$\mat{\alpha}_1,\mat{\alpha}_2,\cdots,\mat{\alpha}_r$是向量空间$\set{V}$的一个基，且是两两正交的向量组，
+  则称$\mat{\alpha}_1,\mat{\alpha}_2,\cdots,\mat{\alpha}_r$是向量空间$\set{V}$的正交基
+  \item 若$\mat{e}_1,\mat{e}_2,\cdots,\mat{e}_r$是向量空间$\set{V}$的一个基，$\mat{e}_1,\mat{e}_2,\cdots,\mat{e}_r$
+  两两正交，且都是单位向量，则称$\mat{e}_1,\mat{e}_2,\cdots,\mat{e}_r$是向量空间$\set{V}$的一个规范正交基（或\textbf{标准正交基}）
+\end{enumerate}
+
+\emplin
+
+$n$维单位向量组$\mat{\epsilon}_1,\mat{\epsilon}_2,\cdots,\mat{\epsilon}_n$也是$\set{R}^n$的一个规范正交基；若
+$\mat{e}_1,\mat{e}_2,\cdots,\mat{e}_r$是$\set{V}$的一个规范正交基，则$\set{V}$中任一向量$\mat{\alpha}$都能由
+$\mat{e}_1,\mat{e}_2,\cdots,\mat{e}_r$线性表示，其第$i$个分量$\lambda_i$为
+\[\lambda_i=\mat{e}_i^T\mat{\alpha}\]
+
+\subsubsection*{规范正交基的求法}
+设$\mat{\alpha}_1,\mat{\alpha}_2,\cdots,\mat{\alpha}_r$是向量空间$\set{V}$的一个基，求$\set{V}$的一个规范正交基；
+也就是要找一组两两正交的单位向量$\mat{e}_1,$$\mat{e}_2,\cdots,$$\mat{e}_r$，
+与$\mat{\alpha}_1,\mat{\alpha}_2,\cdots,\mat{\alpha}_r$
+等价，这一过程称为把基$\mat{\alpha}_1,\mat{\alpha}_2,\cdots,\mat{\alpha}_r$\textbf{规范正交化}
+
+\begin{enumerate}
+  \item \textbf{正交化}：令
+
+  $\mat{\beta}_1=\mat{\alpha}_1$
+
+  $\displaystyle\mat{\beta}_2=\mat{\alpha}_2-\dotprod{\mat{\alpha}_2}{\mat{\beta}_1}\frac{\mat{\beta}_1}{\norm{\mat{\beta}_1}}$
+
+  $\cdots\cdots\cdots\cdots$
+
+  $\displaystyle\mat{\beta}_r=\mat{\alpha}_r-\sum_{i=1}^{r-1}\dotprod{\mat{\alpha}_r}{\mat{\beta}_i}\frac{\mat{\beta}_i}{\norm{\mat{\beta}_i}}$
+
+  \item \textbf{单位化}：令
+  \[
+  \mat{e}_1=\frac{\mat{\beta}_1}{\norm{\mat{\beta}_1}},\quad
+  \mat{e}_2=\frac{\mat{\beta}_2}{\norm{\mat{\beta}_2}},\quad
+  \cdots,\quad
+  \mat{e}_r=\frac{\mat{\beta}_r}{\norm{\mat{\beta}_r}}
+  \]
+\end{enumerate}
+
+\subsection*{正交矩阵与正交变换}
+若$n$阶方阵$\mat{A}$满足$\mat{A}^T\mat{A}=\mat{I}$，则称$\mat{A}$为\textbf{正交矩阵}，简称\textbf{正交阵}
+
+\emplin
+
+其具有性质
+\begin{enumerate}
+  \item $\mat{A}^T=\mat{A}^{-1}$，即$\mat{A}\mat{A}^T=\mat{A}^T\mat{A}=\mat{I}$
+  \item 若$\mat{A}$是正交矩阵，则$\mat{A}^T$（或$\mat{A}^{-1}$）也是正交矩阵
+  \item 两正交矩阵之积仍是正交矩阵
+  \item 正交矩阵的行列式比为$1\text{ or }-1$
+\end{enumerate}
+
+\emplin
+\emplin
+
+\textbf{$\mat{A}$为正交矩阵的充分必要条件是$\mat{A}$的列（行）向量组是单位正交向量组}
+
+\emplin
+\emplin
+\emplin
+
+若$\mat{P}$为正交矩阵，则线性变换$\mat{y}=\mat{P}\mat{x}$称为\textbf{正交变换}
+
+其具有性质：\textbf{正交变换保持向量的内积及长度不变}
+
+\section*{矩阵的特征值与特征向量}
+\subsection*{特征值于特征向量}
+
+设$\mat{A}$是$n$阶方阵，如果数$\lambda$和$n$为非零向量$\mat{x}$使$\mat{A}\mat{x}=\lambda\mat{x}$成立，则称数$\lambda$为方阵$\mat{A}$的
+\textbf{特征值}，非零向量$\mat{x}$称为$\mat{A}$的对应于特征值$\lambda$的\textbf{特征向量}
+
+$n$阶方阵$\mat{A}$的特征值$\lambda$，就是使齐次线性方程组
+\[(\lambda\mat{I}-\mat{A})\mat{x}=\mat{0}\]
+有非零解的值，即满足方程$\det(\lambda\mat{I}-\mat{A})=0$的$\lambda$都是矩阵$\mat{A}$的特征值
+
+称关于$\lambda$的一元$n$次方程$\det(\lambda\mat{I}-\mat{A})=0$为矩阵$\mat{A}$的\textbf{特征方程}，
+称$\lambda$的一元$n$次多项式$f(\lambda)=\det(\lambda\mat{I}-\mat{A})$
+为矩阵$\mat{A}$的\textbf{特征多项式}
+
+设$\lambda=\lambda_i$是方阵$\mat{A}$的一个特征值，则由齐次线性方程组
+\[(\lambda_i\mat{I}-\mat{A})\mat{x}=\mat{0}\]
+可求得非零解$\mat{p}_i$，那么$\mat{p}_i$就是$\mat{A}$的对应特征值$\lambda_i$的特征向量，且$\mat{A}$的对应于特征值$\lambda_i$的特征向量
+全体是$(\lambda_i\mat{I}-\mat{A})\mat{x}=\mat{0}$的全体非零解，即设$\mat{p}_1,\mat{p}_2,\cdots,\mat{p}_s$为方程组的基础解系，
+则$\mat{A}$的对应于特征值$\lambda_i$的全部特征向量为
+\[k_1\mat{p}_1+k_2\mat{p}_2+\cdots+k_s\mat{p}_s\]
+
+\subsection*{特征值与特征向量的性质}
+
+$n$阶矩阵$\mat{A}$与它的转置矩阵$\mat{A}^T$有相同的特征值
+
+设$\mat{A}=(a_{ij})$是$n$阶矩阵，则
+\[f(\lambda)=\det(\lambda\mat{I}-\mat{A})=
+\begin{bmatrix}
+  \lambda-a_{11}&-a_{12}&\cdots&-a_{1n}\\
+  -a_{21}&\lambda-a_{22}&\cdots&-a_{2n}\\
+  \vdots&\vdots&\ddots&\vdots\\
+  -a_{n1}&-a_{n2}&\cdots&\lambda-a_{nn}
+\end{bmatrix}
+=\lambda^n-(\sum_{i=1}^na_{ii})\lambda^{n-1}+\cdots+(-1)^kS_k\lambda^{n-k}+\cdots+(-1)^n\det\mat{A}
+\]
+其中$S_k$是$\mat{A}$的全体$k$阶子项式的和，设$\lambda_1,\lambda_2,\cdots,\lambda_n$是$\mat{A}$的$n$个特征值，
+则由$n$次代数方程的根与系数的关系知
+\begin{enumerate}
+  \item $\lambda_1+\lambda_2+\cdots+\lambda_n=a_{11}+a_{22}+\cdots+a_{nn}$
+  \item $\lambda_1\lambda_2\cdots\lambda_n=\det\mat{A}$
+\end{enumerate}
+其中$\mat{A}$的全体特征值的和$a_{11}+a_{22}+\cdots+a_{nn}$称为矩阵$\mat{A}$的\textbf{迹}，记为$\text{tr}(\mat{A})$
+
+$n$阶矩阵$\mat{A}$是奇异矩阵（即没有逆矩阵）的充分必要条件是$\mat{A}$由一个特征值为$0$
+
+\emplin
+\emplin
+
+设$\mat{A}=(a_{ij})$是$n$阶矩阵，如果
+\begin{enumerate}
+  \item $\displaystyle\sum_{j=1}^n\abs{a_{ij}}<1$
+  \item $\displaystyle\sum_{i=1}^n\abs{a_{ij}}<1$
+\end{enumerate}
+中有一个成立，则矩阵$\mat{A}$的所有特征值$\lambda_i$的模小于$1$，即$\abs{\lambda_i}<1$
+
+\emplin
+
+若$\lambda$是$\mat{A}$的特征值，则$\lambda^k$是$\mat{A}^k$的特征值，$\varphi(\lambda)$是$\varphi(\mat{A})$的特征值，其中
+\[\varphi(x)=a_0x^m+a_1x^{m-1}+\cdots+a_{m-1}x+a_m\]
+特别地，设特征多项式$f(\lambda)=\det(\lambda\mat{I}-\mat{A})$，则$f(\lambda)$是$f(\mat{A})$的特征值，且
+\[\mat{A}^n-(a_{11}+a_{22}+\cdots+a_{nn})\mat{A}^{n-1}+\cdots+(-1)^n\det\mat{A}\mat{I}=\mat{O}\]
+
+\emplin
+\emplin
+\emplin
+
+$n$阶矩阵$\mat{A}$的互不相等的特征值$\lambda_1,\cdots,\lambda_m$对应的特征向量$\mat{p}_1,\mat{p}_2,\cdots,\mat{p}_m$线性无关
+
+\emplin
+
+矩阵的特征向量总是相对于矩阵的特征值而言的，一个特征值具有的他在向量不是唯一的，但一个特征向量不能属于不同特征值
+
+\emplin
+
+正交矩阵的实特征值的绝对值为$1$
+
+\section*{相似矩阵}
+\subsection*{相似矩阵的概念}
+设$\mat{A}$，$\mat{B}$都是$n$阶矩阵，若存在可逆矩阵$\mat{P}$，使
+\[\mat{P}^{-1}\mat{A}\mat{P}=\mat{B}\]
+则称$\mat{B}$是$\mat{A}$的\textbf{相似矩阵}，并称矩阵$\mat{A}$与$\mat{B}$相似
+
+对$\mat{A}$进行$\mat{P}^{-1}\mat{A}\mat{P}$运算称为对$\mat{A}$\textbf{进行相似变换}，称可逆矩阵$\mat{P}$为\textbf{相似变换矩阵}
+
+\emplin
+
+\begin{enumerate}
+  \item 自反性：对任意$n$阶矩阵$\mat{A}$，有$\mat{A}$与$\mat{A}$相似
+  \item 对称性：若$\mat{A}$与$\mat{B}$相似，则$\mat{B}$与$\mat{A}$相似
+  \item 传递性：若$\mat{A}$与$\mat{B}$相似，$\mat{B}$与$\mat{C}$相似，则$\mat{A}$与$\mat{C}$相似
+  \item $\mat{P}^{-1}\mat{A}\mat{B}\mat{P}=(\mat{P}^{-1}\mat{A}\mat{P})(\mat{P}^{-1}\mat{B}\mat{P})$
+  \item $\mat{P}^{-1}(k\mat{A}+l\mat{B})\mat{P}=k\mat{P}^{-1}\mat{A}\mat{P}+l\mat{P}^{-1}\mat{B}\mat{P}$
+\end{enumerate}
+
+\emplin
+\emplin
+
+矩阵间的相似关系实质上考虑的是矩阵的一种分解，特别地，若矩阵$\mat{A}$与一个对角矩阵$\mat{\Lambda}$相似，则有$\mat{A}=\mat{P}^{-1}\mat{\Lambda}\mat{P}$，
+这种分解使得对于较大的$k$值能够快速地计算$\mat{A}^k$，其值为$\mat{A}^k=\mat{P}^{-1}\mat{\Lambda}^k\mat{P}$
+
+\subsection*{相似矩阵的性质}
+若$n$阶矩阵$\mat{A}$与$\mat{B}$相似，则$\mat{A}$与$\mat{B}$的特征多项式相同，从而$\mat{A}$与$\mat{B}$的特征值亦相同
+
+其余性质
+\begin{itemize}
+  \item 相似矩阵一定等价，而等价的矩阵具有相同的秩
+  \item 相似矩阵的秩相等
+  \item 相似矩阵的行列式相等
+  \item 相似矩阵具有相同的可逆性，但它们可逆时，它们的逆矩阵也相似
+\end{itemize}
+
+\subsection*{矩阵与对角矩阵相似的条件}
+$n$阶矩阵$\mat{A}$与对角矩阵
+$\mat{\Lambda}=\begin{bmatrix}
+\lambda_1\\
+&\lambda_2\\
+&&\ddots\\
+&&&\lambda_n
+\end{bmatrix}$
+相似的充分必要条件为矩阵$\mat{A}$有$n$个线性无关的特征向量
+
+对于以上对角矩阵$\mat{\Lambda}$，令$\mat{P}=\begin{bmatrix}\mat{p}_1&\mat{p}_2&\cdots&\mat{p}_n\end{bmatrix}$，
+其中$\mat{p}_1,\mat{p}_2,\cdots,\mat{p}_n$为特征值$\lambda_1,\lambda_2,\cdots,\lambda_n$的对应特征向量，则有$\mat{A}\mat{P}=\mat{P}\mat{\Lambda}$，
+即$\mat{P}^{-1}\mat{A}\mat{P}=\mat{\Lambda}$
+
+\emplin
+\emplin
+
+若$n$阶矩阵$\mat{A}$有$n$个互异的特征值$\lambda_1,\lambda_2,\cdots,\lambda_n$，则$\mat{A}$与对角矩阵
+\[\mat{\Lambda}=\begin{bmatrix}
+\lambda_1\\
+&\lambda_2\\
+&&\ddots\\
+&&&\lambda_n
+\end{bmatrix}\]
+相似
+
+\emplin
+
+对于$n$阶方阵$\mat{A}$，若存在可逆矩阵$\mat{P}$，使$\mat{P}^{-1}\mat{A}\mat{P}=\mat{\Lambda}$为对角矩阵，则称方阵$\mat{A}$\textbf{可对角化}
+
+\emplin
+\emplin
+
+$n$阶矩阵$\mat{A}$可对角化的充分必要条件使对应于$\mat{A}$的每个特征值的线性无关的特征向量的个数恰好等于该特征值的重数，即设$\lambda_i$是矩阵
+$\mat{A}$的$n_i$重特征值，则$\mat{A}$与$\mat{\Lambda}$相似，当且仅当
+\[ r(\lambda_i\mat{I}-\mat{A})=n-n_i \]
+
+\subsection*{矩阵对角化的步骤}
+\begin{enumerate}
+  \item 求出$\mat{A}$的全部特征值$\lambda_1,\lambda_2,\cdots,\lambda_s$
+  \item 对每一个特征值$\lambda_i$，设其重数为$n_i$，则对应齐次方程组
+  \[(\mat{A}-\lambda_i\mat{I})\mat{x}=\mat{0}\]
+  的基础解系由$n_i$个向量$\mat{\xi}_{i1},\mat{\xi}_{i2},\cdots,\mat{\xi}_{in_i}$构成，即$\mat{\xi}_{i1},\mat{\xi}_{i2},\cdots,\mat{\xi}_{in_i}$
+  为$\lambda_i$对应的线性无关的特征向量
+  \item 上面求得的特征向量
+  \[
+  \mat{\xi}_{11},\mat{\xi}_{12},\cdots,\mat{\xi}_{1n_1},\quad
+  \mat{\xi}_{21},\mat{\xi}_{22},\cdots,\mat{\xi}_{2n_2},\quad
+  \cdots,\quad
+  \mat{\xi}_{s1},\mat{\xi}_{s2},\cdots,\mat{\xi}_{sn_s}
+  \]
+  \item 令$\mat{P}=\begin{bmatrix}\mat{\xi}_{11}&\mat{\xi}_{12}&\cdots&\mat{\xi}_{1n_1}&\mat{\xi}_{21}&\mat{\xi}_{22}&\cdots&\mat{\xi}_{2n_2}&
+  \cdots&\mat{\xi}_{s1}&\mat{\xi}_{s2}&\cdots&\mat{\xi}_{sn_s}\end{bmatrix}$，则
+  \[\mat{P}^{-1}\mat{A}\mat{P}=\mat{\Lambda}=\begin{bmatrix}
+  \lambda_1\\
+  &\ddots\\
+  &&\lambda_1\\
+  &&&\lambda_2\\
+  &&&&\ddots\\
+  &&&&&\lambda_2\\
+  &&&&&&\ddots\\
+  &&&&&&&\lambda_s\\
+  &&&&&&&&\ddots\\
+  &&&&&&&&&\lambda_s
+  \end{bmatrix}\]
+\end{enumerate}
+
+\subsection*{利用矩阵对角化计算矩阵多项式}
+设有$n$阶矩阵$\mat{A}$与$\mat{B}$，若$\mat{A}$与$\mat{B}$相似，则存在可逆矩阵$\mat{P}$使得$\mat{A}=\mat{P}\mat{B}\mat{P}^{-1}$，
+于是$\mat{A}^k=\mat{P}\mat{B}^k\mat{P}^{-1}$，同理，对$\mat{A}$的多项式有
+\[\varphi(\mat{A})=a_0\mat{A}^n+\cdots+a_{n-1}\mat{A}+a_n\mat{I}=\mat{P}(a_0\mat{B}^n+\cdots+a_{n-1}\mat{B}+a_n\mat{I})\mat{P}^{-1}=\mat{P}\varphi(\mat{B})\mat{P}^{-1}\]
+
+特别地，若有可逆矩阵$\mat{P}$使得$\mat{P}^{-1}\mat{A}\mat{P}=\mat{\Lambda}$为对角矩阵，则
+\[\mat{A}^k=\mat{P}\mat{\Lambda}^k\mat{P}^{-1},\quad\varphi(\mat{A})\mat{P}\varphi(\mat{\Lambda})\mat{P}^{-1}\]
+其中$\displaystyle\mat{\Lambda}^k=\begin{bmatrix}
+\lambda_1^k\\
+&\lambda_2^k\\
+&&\ddots\\
+&&&\lambda_n^k
+\end{bmatrix}$，$\displaystyle\varphi(\mat{\Lambda})=\begin{bmatrix}
+\varphi(\lambda_1)\\
+&\varphi(\lambda_2)\\
+&&\ddots\\
+&&&\varphi(\lambda_n)
+\end{bmatrix}$
+
+\emplin
+\emplin
+
+设$f(\lambda)$是矩阵$\mat{A}$的特征多项式，则
+\[f(\mat{A})=\mat{O}\]
+
+\subsection*{约当形矩形的概念}
+在$n$阶矩阵$\mat{A}$中，形如$\displaystyle\mat{J}=\begin{bmatrix}
+\lambda&1\\
+&\lambda&1\\
+&&\ddots&\ddots\\
+&&&\lambda&1\\
+&&&&\lambda
+\end{bmatrix}$的矩阵称为\textbf{约当块}
+
+\emplin
+
+如果一个分块矩阵的所有子块都是约当块，即$\displaystyle\mat{J}=\begin{bmatrix}
+\mat{J}_1\\
+&\mat{J}_2\\
+&&\ddots\\
+&&&\mat{J}_s
+\end{bmatrix}$
+
+对角矩阵可视为每个约当块都是一阶的约当形矩阵
+
+\emplin
+\emplin
+
+对任意一个$n$阶矩阵$\mat{A}$，都存在$n$阶可逆矩阵$\mat{T}$使得$\mat{T}^{-1}\mat{A}\mat{T}=\mat{J}$，即任一$n$阶矩阵$\mat{A}$都与一$n$阶约当矩阵$\mat{J}$相似
+
+\section*{实对称矩阵的对角化}
+实对称矩阵的特征值都是实数
+
+
+
+
+
+\end{document}
